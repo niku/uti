@@ -126,3 +126,14 @@
    '(skk-share-private-jisyo t)
    ;; 句読点を「．」「，」にする
    '(skk-kutouten-type 'en)))
+
+;; helm
+(el-get-bundle helm)
+(use-package helm
+  :bind
+  (("M-x" . helm-M-x)
+   ("M-y" . helm-show-kill-ring)
+   ("C-;" . helm-for-files)
+   ("C-o" . helm-imenu)
+   ("M-%" . helm-regexp)
+   ("<help> a" . helm-apropos)))
