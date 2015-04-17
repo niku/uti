@@ -57,3 +57,23 @@
   ;; CommandとOptionを入れ替える
   (setq ns-command-modifier (quote meta))
   (setq ns-alternate-modifier (quote super)))
+
+;;;
+;;; パッケージの設定
+;;;
+
+;; リストAPI
+(el-get-bundle dash)
+(use-package dash)
+
+;; 文字列API
+(el-get-bundle s)
+(use-package s)
+
+;; ファイルAPI
+(el-get-bundle f)
+(use-package f)
+
+;; ハッシュAPI
+(el-get-bundle ht)
+(use-package ht)
