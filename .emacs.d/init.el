@@ -77,3 +77,9 @@
 ;; ハッシュAPI
 (el-get-bundle ht)
 (use-package ht)
+
+;; エディタのテーマ(色)を設定する
+(el-get-bundle solarized-theme)
+(use-package solarized-theme
+  :config
+  (load-theme 'solarized-dark t))
