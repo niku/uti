@@ -83,3 +83,9 @@
 (use-package solarized-theme
   :config
   (load-theme 'solarized-dark t))
+
+;; GUI Emacs での Path を shell と同期させる
+(el-get-bundle exec-path-from-shell)
+(use-package exec-path-from-shell
+  :config
+  (exec-path-from-shell-initialize))
