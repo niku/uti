@@ -96,6 +96,14 @@
   (bind-keys :map dired-mode-map
              ("r" . wdired-change-to-wdired-mode)))
 
+;; 開き括弧と閉じ括弧を対応表示する
+(use-package paren
+  :config
+  (custom-set-variables
+   '(show-paren-delay 0)
+   '(show-paren-style 'mixed))
+  (show-paren-mode t))
+
 ;; GUI Emacs での Path を shell と同期させる
 (el-get-bundle exec-path-from-shell)
 (use-package exec-path-from-shell
