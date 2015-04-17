@@ -89,3 +89,20 @@
 (use-package exec-path-from-shell
   :config
   (exec-path-from-shell-initialize))
+
+;; 日本語入力を SKK で行う
+(el-get-bundle ddskk)
+(use-package ddskk
+  :bind
+  (("C-\\" . skk-mode))
+  :init
+  ;; isearch-mode に入った際に自動的に skk-isearch を起動する
+  (add-hook 'isearch-mode-hook 'skk-isearch-mode-setup)
+  (add-hook 'isearch-mode-end-hook 'skk-isearch-mode-cleanup)
+  :config
+  (custom-set-variables
+   '(skk-server-host "localhost")
+   '(skk-server-portnum 1178)
+   '(skk-share-private-jisyo t)
+   ;; 句読点を「．」「，」にする
+   '(skk-kutouten-type 'en)))
