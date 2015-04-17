@@ -137,3 +137,12 @@
    ("C-o" . helm-imenu)
    ("M-%" . helm-regexp)
    ("<help> a" . helm-apropos)))
+
+;; git client
+(el-get-bundle magit)
+(use-package magit
+  :init
+  (delete 'Git vc-handled-backends)
+  (setq magit-last-seen-setup-instructions "1.4.0")
+  :bind
+  (("C-M-l" . magit-status)))
