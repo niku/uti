@@ -84,6 +84,12 @@
   :config
   (load-theme 'solarized-dark t))
 
+;; emacsclient の接続を待ちうける
+(use-package server
+  :config
+  (unless (server-running-p)
+    (server-start)))
+
 ;; GUI Emacs での Path を shell と同期させる
 (el-get-bundle exec-path-from-shell)
 (use-package exec-path-from-shell
