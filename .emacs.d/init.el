@@ -90,6 +90,12 @@
   (unless (server-running-p)
     (server-start)))
 
+;; dired で直接書き換える
+(use-package wdired
+  :init
+  (bind-keys :map dired-mode-map
+             ("r" . wdired-change-to-wdired-mode)))
+
 ;; GUI Emacs での Path を shell と同期させる
 (el-get-bundle exec-path-from-shell)
 (use-package exec-path-from-shell
