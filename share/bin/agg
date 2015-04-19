@@ -1,0 +1,2 @@
+#!/bin/sh
+exec ag -z --silent --color --color-match '01;31' --smart-case --nogroup "$@"

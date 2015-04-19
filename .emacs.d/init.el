@@ -104,6 +104,24 @@
    '(show-paren-style 'mixed))
   (show-paren-mode t))
 
+;; grep のかわりに ag を使う
+(use-package grep
+  :config
+  (custom-set-variables
+   '(grep-use-null-device nil))
+  (grep-apply-setting 'grep-command "agg ")
+  (grep-apply-setting 'grep-find-command "agg ")
+  (grep-apply-setting 'grep-find-template "agg <R>")
+  (grep-apply-setting 'grep-template "agg <X> <R> <F>")
+
+  ;; この grep の方法はよくないと思うので変えたいなあ．
+  ;; 「grep コマンドの最後に default-directory を付け足す」という方法がわかればいいんだけど．
+  (defun grep-default-directory (pattern)
+    (interactive "sPattern: ")
+    (grep (format "agg %s %s" pattern default-directory)))
+  :bind
+  (("M-g M-d" . grep-default-directory)))
+
 ;; GUI Emacs での Path を shell と同期させる
 (el-get-bundle exec-path-from-shell)
 (use-package exec-path-from-shell
