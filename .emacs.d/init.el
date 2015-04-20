@@ -164,3 +164,16 @@
   (setq magit-last-seen-setup-instructions "1.4.0")
   :bind
   (("C-M-l" . magit-status)))
+
+;; flycheck
+(el-get-bundle flycheck)
+(use-package flycheck
+  :init
+  (add-hook 'after-init-hook 'global-flycheck-mode))
+
+(el-get-bundle flycheck-pos-tip
+  :depends (flycheck popup))
+(use-package flycheck-pos-tip
+  :config
+  '(custom-set-variables
+    '(flycheck-display-errors-function 'flycheck-pos-tip-error-messages)))
