@@ -195,3 +195,9 @@
 (use-package projectile
   :bind
   (("M-g M-r" . projectile-grep)))
+
+;; yasnippet
+(el-get-bundle yasnippet)
+(use-package yasnippet
+  :config
+  (yas-global-mode 1))
