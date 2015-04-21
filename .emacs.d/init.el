@@ -177,3 +177,9 @@
   :config
   '(custom-set-variables
     '(flycheck-display-errors-function 'flycheck-pos-tip-error-messages)))
+
+;; projectile
+(el-get-bundle projectile)
+(use-package projectile
+  :bind
+  (("M-g M-r" . projectile-grep)))
