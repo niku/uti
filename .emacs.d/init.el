@@ -128,6 +128,18 @@
   :config
   (exec-path-from-shell-initialize))
 
+;; 最近開いたファイルを記憶しておき，次に開くときに探しやすくする
+(use-package recentf
+  :config
+  (custom-set-variables
+   '(recentf-max-saved-items nil)
+   '(recentf-exclude '(".recentf"))
+   '(recentf-auto-cleanup 10))
+  (recentf-mode 1))
+
+(el-get-bundle recentf-ext)
+(use-package recentf-ext)
+
 ;; 日本語入力を SKK で行う
 (el-get-bundle ddskk)
 (use-package ddskk
