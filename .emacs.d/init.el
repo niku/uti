@@ -201,3 +201,7 @@
 (use-package yasnippet
   :config
   (yas-global-mode 1))
+
+;; 補完機能を利用する
+(el-get-bundle auto-complete)
+(use-package auto-complete)
