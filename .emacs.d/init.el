@@ -205,3 +205,11 @@
 ;; 補完機能を利用する
 (el-get-bundle auto-complete)
 (use-package auto-complete)
+
+;; 一時的なウィンドウをポップアップで開く
+(el-get-bundle popwin)
+(use-package popwin
+  :config
+  (popwin-mode 1)
+  ;; helm を popwin で開く
+  (push '("\\*helm.*\\*" :regexp t) popwin:special-display-config))
