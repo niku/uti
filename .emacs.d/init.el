@@ -213,3 +213,12 @@
   (popwin-mode 1)
   ;; helm を popwin で開く
   (push '("\\*helm.*\\*" :regexp t) popwin:special-display-config))
+
+;; 今見ているソースが github にあればブラウザで開く
+(el-get-bundle github-browse-file)
+(use-package github-browse-file
+  :bind
+  (("C-M-g" . github-browse-file))
+  :config
+  (custom-set-variables
+   '(github-browse-file-show-line-at-point t)))
