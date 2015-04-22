@@ -212,7 +212,9 @@
   :config
   (popwin-mode 1)
   ;; helm を popwin で開く
-  (push '("\\*helm.*\\*" :regexp t) popwin:special-display-config))
+  (push '("\\*helm.*\\*" :regexp t) popwin:special-display-config)
+  ;; quickrun を popwin で開く
+  (push '("*quickrun*") popwin:special-display-config))
 
 ;; 今見ているソースが github にあればブラウザで開く
 (el-get-bundle github-browse-file)
@@ -222,3 +224,9 @@
   :config
   (custom-set-variables
    '(github-browse-file-show-line-at-point t)))
+
+;; 開いているバッファを簡単に実行して結果を得る
+(el-get-bundle quickrun)
+(use-package quickrun
+  :bind
+  (("C-c q r" . quickrun)))
