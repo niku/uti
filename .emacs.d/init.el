@@ -56,7 +56,10 @@
 (when (eq system-type 'darwin)
   ;; CommandとOptionを入れ替える
   (setq ns-command-modifier (quote meta))
-  (setq ns-alternate-modifier (quote super)))
+  (setq ns-alternate-modifier (quote super))
+  ;; フォント設定
+  (set-face-attribute 'default nil :family "Ricty") ; 英語
+  (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Hiragino Kaku Gothic ProN"))) ; 日本語
 
 ;;;
 ;;; パッケージの設定
