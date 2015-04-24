@@ -286,3 +286,8 @@
      '(ruby-block-highlight-toggle t))
     (ruby-block-mode t))
   (add-hook 'ruby-mode-hook 'ruby-mode-hooks-for-ruby-block-mode))
+
+;;; JavaScript
+(use-package js-mode
+  :mode
+  (("\\.jshintrc\\'" . js-mode)))
