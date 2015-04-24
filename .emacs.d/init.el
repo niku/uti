@@ -233,3 +233,54 @@
 (use-package quickrun
   :bind
   (("C-c q r" . quickrun)))
+
+;;;
+;;; 言語別設定
+;;;
+
+;; 各メジャーモードが対応しているファイル名は以下のS式を評価すると得られる
+;; ruby-mode の例
+;; (let ((mode 'ruby-mode))
+;;   (->> auto-mode-alist
+;;        (-filter (lambda(cons) (eq (cdr cons) mode)))
+;;        (-map 'car)))
+;; => ("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'")
+
+;;; Ruby
+(use-package ruby-mode
+  :config
+  (custom-set-variables
+   ;; Rubyコードの1行目にマジックコメントを挿入しない
+   '(ruby-insert-encoding-magic-comment nil)))
+
+;; M-x inf-ruby で REPL を起動する
+(el-get-bundle inf-ruby)
+(use-package inf-ruby
+  :config
+  (custom-set-variables
+   '(inf-ruby-default-implementation "pry")
+   '(inf-ruby-eval-binding "Pry.toplevel_binding")))
+
+;; `class` や `if` などを書くと `end` を補完してくれ，
+;; `(` を書くと `)`，`{` を書くと `}` を補完してくれる
+;;
+;; どんな文字が補完されるか知るには
+;; - ruby-electric-simple-keywords-re
+;; - ruby-electric-matching-delimeter-alist
+;; を見るとよい
+(el-get-bundle ruby-electric)
+(use-package ruby-electric)
+
+;; end に対応する class や if を示してくれる
+;;
+;; どんなものに対応してくれるか知るには
+;; - ruby-block-keyword-list
+;; を見るとよい
+(el-get-bundle ruby-block)
+(use-package ruby-block
+  :init
+  (defun ruby-mode-hooks-for-ruby-block-mode ()
+    (custom-set-variables
+     '(ruby-block-highlight-toggle t))
+    (ruby-block-mode t))
+  (add-hook 'ruby-mode-hook 'ruby-mode-hooks-for-ruby-block-mode))
