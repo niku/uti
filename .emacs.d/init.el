@@ -299,3 +299,14 @@
 ;; Elixir の mix や iex などを Emacs から使えるようにしてくれる
 (el-get-bundle alchemist)
 (use-package alchemist)
+
+;;; TypeScript
+(el-get-bundle tss
+  :depends
+  (auto-complete json-mode log4e yaxception))
+(use-package typescript-mode
+  :mode
+  (("\\.ts\\'" . typescript-mode)))
+(use-package tss
+  :config
+  (tss-config-default))
