@@ -291,3 +291,11 @@
 (use-package js-mode
   :mode
   (("\\.jshintrc\\'" . js-mode)))
+
+;;; Elixir
+(el-get-bundle elixir)
+(use-package elixir)
+
+;; Elixir の mix や iex などを Emacs から使えるようにしてくれる
+(el-get-bundle alchemist)
+(use-package alchemist)
