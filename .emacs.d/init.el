@@ -149,16 +149,18 @@
   :bind
   (("C-\\" . skk-mode))
   :init
-  ;; isearch-mode に入った際に自動的に skk-isearch を起動する
-  (add-hook 'isearch-mode-hook 'skk-isearch-mode-setup)
-  (add-hook 'isearch-mode-end-hook 'skk-isearch-mode-cleanup)
-  :config
+  ;; ライブラリ読み込み前に設定しておかなければならない
   (custom-set-variables
    '(skk-server-host "localhost")
    '(skk-server-portnum 1178)
-   '(skk-share-private-jisyo t)
-   ;; 句読点を「．」「，」にする
-   '(skk-kutouten-type 'en)))
+   '(skk-share-private-jisyo t))
+  ;; 句読点を「．」「，」にする
+  ;; (describe-variable 'skk-kutouten-type)
+  ;; で `setq-default` を利用せよと書いてあったので従っている
+  (setq-default skk-kutouten-type 'en)
+  ;; isearch-mode に入った際に自動的に skk-isearch を起動する
+  (add-hook 'isearch-mode-hook 'skk-isearch-mode-setup)
+  (add-hook 'isearch-mode-end-hook 'skk-isearch-mode-cleanup))
 
 ;; helm
 (el-get-bundle helm)
