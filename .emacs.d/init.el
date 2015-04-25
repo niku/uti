@@ -274,6 +274,15 @@
 ;;        (-map 'car)))
 ;; => ("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'")
 
+;;; Markdown
+(el-get-bundle markdown-mode)
+(use-package markdown-mode
+  :mode
+  (("\\.markdown\\'" . gfm-mode)
+   ("\\.md\\'" . gfm-mode))
+  :commands
+  (markdown-mode))
+
 ;;; Ruby
 (use-package ruby-mode
   :config
