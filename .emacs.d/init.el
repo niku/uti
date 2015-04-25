@@ -236,6 +236,19 @@
   :bind
   (("C-c q r" . quickrun)))
 
+;; twitter クライアント
+(el-get-bundle twittering-mode)
+(use-package twittering-mode
+  :config
+  (custom-set-variables
+   '(twittering-use-master-password t)
+   '(twittering-status-format "%i %s %p: %t")
+   '(twittering-default-show-replied-tweets t)
+   '(twittering-use-native-retweet t))
+  ;; twitter client 名を変える
+  (setq twittering-oauth-consumer-key (base64-decode-string "Q2tuVklCTUxVRHdIN01BOXg0V0huZw=="))
+  (setq twittering-oauth-consumer-secret (base64-decode-string "NEpWVWhTVk4zVGJSeXZOUnZuakJ3YlpqdUF0RUV6UzhqWHpGWlhma1U=")))
+
 ;;;
 ;;; 言語別設定
 ;;;
