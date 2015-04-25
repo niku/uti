@@ -170,10 +170,7 @@
   ;; 句読点を「．」「，」にする
   ;; (describe-variable 'skk-kutouten-type)
   ;; で `setq-default` を利用せよと書いてあったので従っている
-  (setq-default skk-kutouten-type 'en)
-  ;; isearch-mode に入った際に自動的に skk-isearch を起動する
-  (add-hook 'isearch-mode-hook 'skk-isearch-mode-setup)
-  (add-hook 'isearch-mode-end-hook 'skk-isearch-mode-cleanup))
+  (setq-default skk-kutouten-type 'en))
 
 ;; helm
 (el-get-bundle helm)
