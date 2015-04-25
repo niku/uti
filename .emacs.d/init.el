@@ -143,6 +143,19 @@
 (el-get-bundle recentf-ext)
 (use-package recentf-ext)
 
+;; 日本語をローマ字でインクリメンタルサーチする
+(el-get-bundle migemo)
+(use-package migemo
+  :config
+  (custom-set-variables
+   '(migemo-command "cmigemo")
+   '(migemo-options '("-q" "--emacs"))
+   '(migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
+   '(migemo-user-dictionary nil)
+   '(migemo-regex-dictionary nil)
+   '(migemo-coding-system 'utf-8-unix))
+  (migemo-init))
+
 ;; 日本語入力を SKK で行う
 (el-get-bundle ddskk)
 (use-package ddskk
