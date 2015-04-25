@@ -200,6 +200,18 @@
                      (volatile) (match identity)))
          source))))
 
+;; インクリメンタルサーチを機能拡張する
+(el-get-bundle ace-isearch)
+(use-package ace-isearch
+  :config
+  (bind-keys :map helm-swoop-map
+             ;; ace-isearch との操作感を統合する
+             ((kbd "C-r") . helm-previous-line)
+             ((kbd "C-s") . helm-next-line))
+  (custom-set-variables
+   '(ace-isearch-submode 'ace-jump-char-mode))
+  (global-ace-isearch-mode 1))
+
 ;; git client
 (el-get-bundle magit)
 (use-package magit
