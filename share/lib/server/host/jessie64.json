@@ -29,5 +29,8 @@
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "shutdown_command": "echo 'vagrant'|sudo -S /sbin/shutdown -hP now"
+  }],
+  "post-processors": [{
+    "type": "vagrant"
   }]
 }
