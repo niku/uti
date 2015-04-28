@@ -32,5 +32,12 @@
   }],
   "post-processors": [{
     "type": "vagrant"
+  }],
+  "provisioners": [{
+    "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
+    "type": "shell",
+    "scripts": [
+      "scripts/update.sh"
+    ]
   }]
 }
