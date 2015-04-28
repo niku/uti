@@ -304,8 +304,8 @@
 (el-get-bundle markdown-mode)
 (use-package markdown-mode
   :mode
-  (("\\.markdown\\'" . gfm-mode)
-   ("\\.md\\'" . gfm-mode))
+  (("\\.markdown\\'" . markdown-mode)
+   ("\\.md\\'" . markdown-mode))
   :commands
   (markdown-mode))
 
