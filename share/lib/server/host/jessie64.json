@@ -42,7 +42,8 @@
       "scripts/networking.sh",
       "scripts/sudoers.sh",
       "scripts/vagrant.sh",
-      "scripts/vmtools.sh"
+      "scripts/vmtools.sh",
+      "scripts/cleanup.sh"
     ]
   }]
 }
