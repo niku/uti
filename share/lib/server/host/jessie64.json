@@ -16,6 +16,7 @@
       "debconf/frontend=noninteractive <wait>",
       "console-setup/ask_detect=false <wait>",
       "console-keymaps-at/keymap=us <wait>",
+      "DEBCONF_DEBUG=5 <wait>",
       "<enter><wait>"
     ],
     "boot_wait": "10s",
