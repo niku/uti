@@ -300,6 +300,17 @@
 ;;        (-map 'car)))
 ;; => ("\\(?:\\.rb\\|ru\\|rake\\|thor\\|jbuilder\\|gemspec\\|podspec\\|/\\(?:Gem\\|Rake\\|Cap\\|Thor\\|Vagrant\\|Guard\\|Pod\\)file\\)\\'")
 
+;;; Org
+
+(el-get-bundle org)
+(use-package org
+  :config
+  (custom-set-variables
+   ;; orgファイルの中で画像をインライン表示する
+   '(org-startup-with-inline-images t)
+   ;; src ブロックの中を色付けする
+   '(org-src-fontify-natively t)))
+
 ;;; Markdown
 (el-get-bundle markdown-mode)
 (use-package markdown-mode
