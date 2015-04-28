@@ -37,7 +37,8 @@
     "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
     "type": "shell",
     "scripts": [
-      "scripts/update.sh"
+      "scripts/update.sh",
+      "scripts/sshd.sh"
     ]
   }]
 }
