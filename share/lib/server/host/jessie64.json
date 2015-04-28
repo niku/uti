@@ -41,7 +41,8 @@
       "scripts/sshd.sh",
       "scripts/networking.sh",
       "scripts/sudoers.sh",
-      "scripts/vagrant.sh"
+      "scripts/vagrant.sh",
+      "scripts/vmtools.sh"
     ]
   }]
 }
