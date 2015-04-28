@@ -39,7 +39,8 @@
     "scripts": [
       "scripts/update.sh",
       "scripts/sshd.sh",
-      "scripts/networking.sh"
+      "scripts/networking.sh",
+      "scripts/sudoers.sh"
     ]
   }]
 }
