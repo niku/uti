@@ -38,7 +38,8 @@
     "type": "shell",
     "scripts": [
       "scripts/update.sh",
-      "scripts/sshd.sh"
+      "scripts/sshd.sh",
+      "scripts/networking.sh"
     ]
   }]
 }
