@@ -304,6 +304,11 @@
 
 (el-get-bundle org)
 (use-package org
+  :mode
+  ;; org-default-notes-file のデフォルト値は .notes になっている
+  (("\\.notes\\'" . org-mode))
+  :bind
+  (("C-c c" . org-capture))
   :config
   (custom-set-variables
    ;; orgファイルの中で画像をインライン表示する
