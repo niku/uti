@@ -410,3 +410,9 @@
 (use-package tss
   :config
   (tss-config-default))
+
+
+;;;
+;;; ローカルな環境で利用するようなelisp
+;;;
+(load "~/local-elisp.el" t)
