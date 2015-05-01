@@ -329,6 +329,25 @@
   :commands
   (markdown-mode))
 
+;;; SQL
+(use-package sql-mode
+  :init
+  ;; 読み込み後(config:)に設定するとうまく動かない
+  (custom-set-variables
+   ;; 履歴を保存する
+   '(sql-input-ring-file-name "~/.sql-input-ring"))
+
+  (defun sql-interactive-mode-hooks ()
+    ;; 横方向に長い場合に折り返さない
+    (toggle-truncate-lines t))
+  (add-hook 'sql-interactive-mode-hook 'sql-interactive-mode-hooks))
+
+;; sqlファイルのインデントを整える
+(el-get-bundle sql-indent
+  :depends
+  (sql-complete))
+(use-package sql-indent)
+
 ;;; Ruby
 (use-package ruby-mode
   :config
