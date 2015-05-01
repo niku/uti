@@ -13,6 +13,26 @@
 (require 'use-package)
 
 ;;;
+;;; 便利なAPIを設定の記述に使いたいので先に読み込んでおく
+;;;
+
+;; リストAPI
+(el-get-bundle dash)
+(use-package dash)
+
+;; 文字列API
+(el-get-bundle s)
+(use-package s)
+
+;; ファイルAPI
+(el-get-bundle f)
+(use-package f)
+
+;; ハッシュAPI
+(el-get-bundle ht)
+(use-package ht)
+
+;;;
 ;;; デフォルトの設定
 ;;;
 
@@ -64,22 +84,6 @@
 ;;;
 ;;; パッケージの設定
 ;;;
-
-;; リストAPI
-(el-get-bundle dash)
-(use-package dash)
-
-;; 文字列API
-(el-get-bundle s)
-(use-package s)
-
-;; ファイルAPI
-(el-get-bundle f)
-(use-package f)
-
-;; ハッシュAPI
-(el-get-bundle ht)
-(use-package ht)
 
 ;; エディタのテーマ(色)を設定する
 (el-get-bundle solarized-theme)
