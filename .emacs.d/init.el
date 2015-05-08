@@ -384,6 +384,10 @@
   (sql-complete))
 (use-package sql-indent)
 
+;;; Yaml
+(el-get-bundle yaml-mode)
+(use-package yaml-mode)
+
 ;;; Ruby
 (use-package ruby-mode
   :config
