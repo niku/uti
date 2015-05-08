@@ -185,7 +185,10 @@
    ("C-;" . helm-for-files)
    ("C-o" . helm-imenu)
    ("M-%" . helm-regexp)
-   ("<help> a" . helm-apropos)))
+   ("<help> a" . helm-apropos))
+  :config
+  (bind-keys :map helm-map
+             ("C-h" . delete-backward-char)))
 
 (el-get-bundle helm-migemo)
 (use-package helm-migemo
