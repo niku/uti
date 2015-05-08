@@ -313,6 +313,10 @@
   (("\\.notes\\'" . org-mode))
   :bind
   (("C-c c" . org-capture))
+  :init
+  (defun org-mode-hooks-for-skk-mode ()
+    (skk-mode 1))
+  (add-hook 'org-mode-hook 'org-mode-hooks-for-skk-mode)
   :config
   (custom-set-variables
    ;; orgファイルの中で画像をインライン表示する
