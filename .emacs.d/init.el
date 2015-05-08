@@ -324,6 +324,38 @@
    ;; src ブロックの中を色付けする
    '(org-src-fontify-natively t)))
 
+;;; Nikulog
+
+(setq nikulog-path "~/nikulog")
+
+(defun nikulog--get-year-month-day ()
+  "Return (year month day) ex. (\"2015\" \"05\" \"08\")"
+  (-let (((_ &as sec minute hour day month year dow dst zone) (decode-time)))
+    (->> (list year month day)
+         (-map (lambda(x) (format "%02d" x))))))
+
+(defun nikulog--create-directory-and-return-path (path year month day)
+  "Create directory if not exists, and then return path"
+  (let ((dir (list path year month day)))
+    (apply 'f-mkdir dir)
+    (apply 'f-join dir)))
+
+(defun nikulog-path-today ()
+  (let ((path-today (cons nikulog-path (nikulog--get-year-month-day))))
+    (apply 'nikulog--create-directory-and-return-path path-today)
+    path-today))
+
+(defun nikulog-title-today ()
+  (s-join "-" (nikulog--get-year-month-day)))
+
+(with-eval-after-load 'org-capture
+  (let* ((filepath (apply 'f-join (append (nikulog-path-today) '("index.org"))))
+         (title (nikulog-title-today)))
+    ;; http://stackoverflow.com/questions/8614642/how-to-type-a-dynamic-file-entry-for-org-capture
+    ;; バッククォートの中では "," をつけたものだけ評価/展開される
+    ;; http://qiita.com/snmsts@github/items/ef625bd6be7e685843ca
+    (add-to-list 'org-capture-templates `("l" "Nikulog" entry (file+headline ,filepath ,title) "* %?"))))
+
 ;;; Markdown
 (el-get-bundle markdown-mode)
 (use-package markdown-mode
