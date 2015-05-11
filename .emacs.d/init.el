@@ -295,6 +295,45 @@
   (setq twittering-oauth-consumer-key (base64-decode-string "Q2tuVklCTUxVRHdIN01BOXg0V0huZw=="))
   (setq twittering-oauth-consumer-secret (base64-decode-string "NEpWVWhTVk4zVGJSeXZOUnZuakJ3YlpqdUF0RUV6UzhqWHpGWlhma1U=")))
 
+;;; Firefox クライアント
+;; Firefox に Add-on を入れておくと Firefox が telnet サーバーを立ててくれる
+;; https://addons.mozilla.org/En-us/firefox/addon/mozrepl/
+;; そのサーバーに繋いで Emacs から Firefox を操作したり，Firefox の各種情報を取得するためのクライアント
+;;
+;; 参考 http://blogs.openaether.org/?p=236
+(el-get-bundle moz-repl)
+(use-package moz
+  :config
+  ;; http://blogs.openaether.org/?p=236
+  (defun jk/moz-get (attr)
+    (comint-send-string (inferior-moz-process) attr)
+    ;; try to give the repl a chance to respond
+    (sleep-for 0 100))
+  (defun jk/moz-get-current-url ()
+    (interactive)
+    (jk/moz-get "repl._workContext.content.location.href"))
+  (defun jk/moz-get-current-title ()
+    (interactive)
+    (jk/moz-get "repl._workContext.content.document.title"))
+  (defun jk/moz-get-current (moz-fun)
+    (funcall moz-fun)
+    ;; doesn't work if repl takes too long to output string
+    (save-excursion
+      (set-buffer (process-buffer (inferior-moz-process)))
+      (goto-char (point-max))
+      (previous-line)
+      (setq jk/moz-current (buffer-substring-no-properties
+                            (+ (point-at-bol) (length moz-repl-name) 3)
+                            (- (point-at-eol) 1))))
+    (message "%s" jk/moz-current)
+    jk/moz-current)
+  (defun jk/moz-url ()
+    (interactive)
+    (jk/moz-get-current 'jk/moz-get-current-url))
+  (defun jk/moz-title ()
+    (interactive)
+    (jk/moz-get-current 'jk/moz-get-current-title)))
+
 ;;;
 ;;; 言語別設定
 ;;;
@@ -357,7 +396,8 @@
     ;; http://stackoverflow.com/questions/8614642/how-to-type-a-dynamic-file-entry-for-org-capture
     ;; バッククォートの中では "," をつけたものだけ評価/展開される
     ;; http://qiita.com/snmsts@github/items/ef625bd6be7e685843ca
-    (add-to-list 'org-capture-templates `("l" "Nikulog" entry (file+headline ,filepath ,title) "* %?"))))
+    (add-to-list 'org-capture-templates `("f" "Firefox to Nikulog" entry (file+headline ,filepath ,title) "* %?\n%(concat \"[[\" (jk/moz-url) \"][\" (jk/moz-title) \"]]\")\n\n"))
+    (add-to-list 'org-capture-templates `("l" "Entry to Nikulog" entry (file+headline ,filepath ,title) "* %?"))))
 
 ;;; Markdown
 (el-get-bundle markdown-mode)
