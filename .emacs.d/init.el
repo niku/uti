@@ -390,6 +390,16 @@
 (defun nikulog-title-today ()
   (s-join "-" (nikulog--get-year-month-day)))
 
+(defun nikulog-add-internal-link-to-region (&optional beg end)
+  "Add url encoded internal link (like \"ほげ\" -> \"#%E3%81%BB%E3%81%92\") to region"
+  (interactive "r")
+  (if (use-region-p)
+      (let ((str (buffer-substring-no-properties beg end)))
+        (save-excursion
+          (delete-region beg end)
+          (goto-char beg)
+          (insert (format "[[#%s][%s]]" (url-encode-url str) str))))))
+
 (with-eval-after-load 'org-capture
   (let* ((filepath (apply 'f-join (append (nikulog-path-today) '("index.org"))))
          (title (nikulog-title-today)))
