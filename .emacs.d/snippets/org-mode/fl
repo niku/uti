@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: fl
+# key: fl
+# binding: direct-keybinding
+# --
+[[`(jk/moz-url)`][`(jk/moz-title))`]]
