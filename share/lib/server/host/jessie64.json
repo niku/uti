@@ -31,7 +31,8 @@
     "shutdown_command": "echo 'vagrant'|sudo -S /sbin/shutdown -hP now"
   }],
   "post-processors": [{
-    "type": "vagrant"
+    "type": "vagrant",
+    "output": "debian-8.0.0-amd64.box"
   }],
   "provisioners": [{
     "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
