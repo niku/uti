@@ -366,6 +366,23 @@
    ;; src ブロックの中を色付けする
    '(org-src-fontify-natively t)))
 
+;; org-babel
+(el-get-bundle victorolinasc/ob-elixir) ; org-babel で Elixir を扱う
+(use-package ob
+  :init
+  ;; org-babelで使う言語を設定する
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (ruby . t)
+     (elixir . t)))
+  :config
+  ;; org-babel tangle でソースコードを書き出す時に先頭の1行をあけない
+  (add-to-list 'org-babel-default-header-args '(:padline . "no"))
+  (custom-set-variables
+   ;; コードを評価するときに尋ねない
+   '(org-confirm-babel-evaluate nil)))
+
 ;;; Nikulog
 
 (setq nikulog-path "~/nikulog")
