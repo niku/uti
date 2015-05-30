@@ -176,6 +176,26 @@
   ;; で `setq-default` を利用せよと書いてあったので従っている
   (setq-default skk-kutouten-type 'en))
 
+;;; eshell
+(use-package eshell
+  :config
+  (custom-set-variables
+   ;; ファイル補完時に大文字と小文字を区別しない
+   '(eshell-cmpl-ignore-case t)
+   ;; 履歴を最大限保持する
+   ;; maximum value of integer in emacs(64bit) is 2305843009213693951 = 2^(64-3)-1
+   ;; 最大値にしていると，eshellの起動でエラーになることがわかったので，もう少し小さい値 2^(32-3)-1 = 536870911 にする．
+   ;; 大きい値にしていると，eshellの起動が遅くなることがわかったので，さらに小さい値にする :/
+   '(eshell-history-size 100000)
+   ;; 連続して行なった同じコマンドが重複してヒストリに登録されず，1件だけ登録されるようにする
+   '(eshell-hist-ignoredups t))
+  ;; eshell コマンド入力時に M-p を押すと履歴を helm でたどる
+  ;; (bind-keys :map eshell-mode-hook ("M-p" . helm-eshell-history))
+  ;; だと動作しなかった
+  (defun eshell-mode-hook-for-helm-eshell-history ()
+    (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history))
+  (add-hook 'eshell-mode-hook 'eshell-mode-hook-for-helm-eshell-history))
+
 ;; helm
 (el-get-bundle helm)
 (use-package helm
