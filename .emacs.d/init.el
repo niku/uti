@@ -239,6 +239,12 @@
    '(ace-isearch-submode 'ace-jump-char-mode))
   (global-ace-isearch-mode 1))
 
+;; describe-bindings の結果を helm で見られるようにする
+(el-get-bundle helm-descbinds)
+(use-package helm-descbinds
+  :config
+  (helm-descbinds-mode))
+
 ;; yasnippet のテンプレート一覧を helm で見られるようにする
 (el-get-bundle helm-c-yasnippet)
 (use-package helm-c-yasnippet
