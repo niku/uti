@@ -239,6 +239,12 @@
    '(ace-isearch-submode 'ace-jump-char-mode))
   (global-ace-isearch-mode 1))
 
+;; yasnippet のテンプレート一覧を helm で見られるようにする
+(el-get-bundle helm-c-yasnippet)
+(use-package helm-c-yasnippet
+  :bind
+  (("C-c y" . helm-yas-complete)))
+
 ;; git client
 (el-get-bundle magit)
 (use-package magit
