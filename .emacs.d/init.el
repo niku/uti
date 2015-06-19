@@ -129,6 +129,10 @@
   :bind
   (("M-g M-d" . grep-default-directory)))
 
+;; grep の結果を表示しているバッファで C-c C-p を押して直接編集する
+(el-get-bundle wgrep)
+(use-package wgrep)
+
 ;; GUI Emacs での Path を shell と同期させる
 (el-get-bundle exec-path-from-shell)
 (use-package exec-path-from-shell
@@ -558,3 +562,4 @@
 ;;; ローカルな環境で利用するようなelisp
 ;;;
 (load "~/local-elisp.el" t)
+(put 'downcase-region 'disabled nil)
