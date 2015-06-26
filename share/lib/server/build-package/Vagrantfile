@@ -8,8 +8,8 @@ Vagrant.configure(2) do |config|
     grep "source ~/.asdf/asdf.sh" ~/.bashrc > /dev/null 2>&1 || echo "source ~/.asdf/asdf.sh" >> ~/.bashrc
 
     ~/.asdf/bin/asdf plugin-update erlang || ~/.asdf/bin/asdf plugin-add erlang https://github.com/HashNuke/asdf-erlang.git
-    ~/.asdf/bin/asdf install erlang 17.5
-    grep erlang ~/.tool-versions > /dev/null 2>&1 || echo "erlang 17.5" >> ~/.tool-versions
+    ~/.asdf/bin/asdf install erlang 18.0
+    grep erlang ~/.tool-versions > /dev/null 2>&1 || echo "erlang 18.0" >> ~/.tool-versions
 
     ~/.asdf/bin/asdf plugin-update elixir || ~/.asdf/bin/asdf plugin-add elixir https://github.com/HashNuke/asdf-elixir.git
     ~/.asdf/bin/asdf install elixir 1.0.4
