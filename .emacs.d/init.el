@@ -543,7 +543,8 @@
 (use-package elixir)
 
 ;; Elixir の mix や iex などを Emacs から使えるようにしてくれる
-(el-get-bundle alchemist)
+(el-get-bundle alchemist
+  :depends (company-mode))
 (use-package alchemist)
 
 ;;; TypeScript
