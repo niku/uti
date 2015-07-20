@@ -232,7 +232,8 @@
          source))))
 
 ;; インクリメンタルサーチを機能拡張する
-(el-get-bundle ace-isearch)
+(el-get-bundle ace-isearch
+  :depends (avy helm-swoop ace-jump-mode))
 (use-package ace-isearch
   :config
   (bind-keys :map helm-swoop-map
