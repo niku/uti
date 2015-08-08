@@ -71,7 +71,7 @@ brew install jq
 brew install tree
 brew install node
 brew install npm
-npm install -g jshint
+npm install -g eslint
 npm install -g jsonlint
 npm install -g jsdoc
 npm install -g grunt-cli
