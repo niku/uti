@@ -212,7 +212,11 @@
    ("<help> a" . helm-apropos))
   :config
   (bind-keys :map helm-map
-             ("C-h" . delete-backward-char)))
+             ("C-h" . delete-backward-char))
+  ;; 非同期読み込みにしていると，読み込みのタイミングによっては
+  ;; 後続の処理で helm の変数を見つけられなくてエラーになることがあったので
+  ;; 同期的に読み込まれるようにする
+  :demand t)
 
 (el-get-bundle helm-migemo)
 (use-package helm-migemo
