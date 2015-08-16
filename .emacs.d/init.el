@@ -537,7 +537,10 @@
 ;;; JavaScript
 (use-package js-mode
   :mode
-  (("\\.jshintrc\\'" . js-mode)))
+  (("\\.jshintrc\\'" . js-mode))
+  :config
+  (custom-set-variables
+   '(js-indent-level 2)))
 
 ;;; Elixir
 (el-get-bundle elixir)
