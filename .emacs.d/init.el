@@ -473,7 +473,7 @@
   (markdown-mode))
 
 ;;; SQL
-(use-package sql-mode
+(use-package sql
   :init
   ;; 読み込み後(config:)に設定するとうまく動かない
   (custom-set-variables
