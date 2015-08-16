@@ -71,6 +71,7 @@ brew install jq
 brew install tree
 brew install node
 brew install npm
+npm install -g bower
 npm install -g eslint
 npm install -g jsonlint
 npm install -g jsdoc
