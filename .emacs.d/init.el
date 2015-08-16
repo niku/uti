@@ -86,7 +86,7 @@
 ;;;
 
 ;; エディタのテーマ(色)を設定する
-(el-get-bundle solarized-theme)
+(el-get-bundle solarized-emacs)
 (use-package solarized-theme
   :config
   (load-theme 'solarized-dark t))
@@ -291,7 +291,8 @@
   (yas-global-mode 1))
 
 ;; 補完機能を利用する
-(el-get-bundle auto-complete)
+(el-get-bundle auto-complete
+  :depends (popup))
 (use-package auto-complete)
 
 ;; 一時的なウィンドウをポップアップで開く
@@ -385,7 +386,7 @@
 
 ;;; Org
 
-(el-get-bundle org)
+(el-get-bundle org-mode)
 (use-package org
   :mode
   ;; org-default-notes-file のデフォルト値は .notes になっている
@@ -544,7 +545,7 @@
 
 ;;; Elixir
 (el-get-bundle elixir)
-(use-package elixir)
+(use-package elixir-mode)
 
 ;; Elixir の mix や iex などを Emacs から使えるようにしてくれる
 (el-get-bundle alchemist
