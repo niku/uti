@@ -44,7 +44,7 @@ brew tap sanemat/font
 brew install brew-cask
 brew install coreutils
 brew install texinfo
-brew link texinfo
+brew link texinfo --force
 brew install zsh
 brew install git
 brew install cmake
