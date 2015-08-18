@@ -546,6 +546,12 @@
   (custom-set-variables
    '(js-indent-level 2)))
 
+;;; JSON
+(use-package json
+  :init
+  (custom-set-variables
+   '(js-indent-level 2)))
+
 ;;; Elixir
 (el-get-bundle elixir)
 (use-package elixir-mode)
