@@ -572,6 +572,9 @@
   :config
   (tss-config-default))
 
+;;; Clojure
+(el-get-bundle clojure-mode)
+(use-package clojure-mode)
 
 ;;;
 ;;; ローカルな環境で利用するようなelisp

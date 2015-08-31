@@ -75,6 +75,7 @@ npm install -g bower
 npm install -g eslint
 npm install -g jsonlint
 npm install -g jsdoc
+npm install -g source-map-support
 npm install -g grunt-cli
 npm install -g typescript-tools
 brew install erlang
@@ -95,6 +96,7 @@ brew install android-ndk
 brew install closure-compiler
 brew install clojurescript
 brew install leiningen
+brew install rlwrap
 brew install poppler
 brew cask install java
 brew cask install karabiner
