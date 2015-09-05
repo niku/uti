@@ -89,6 +89,9 @@
 (el-get-bundle solarized-emacs)
 (use-package solarized-theme
   :config
+  (custom-set-variables
+   ;; org-mode の見出し行の文字の大きさを変えない
+   '(solarized-scale-org-headlines nil))
   (load-theme 'solarized-dark t))
 
 ;; emacsclient の接続を待ちうける
