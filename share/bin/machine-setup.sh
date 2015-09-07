@@ -131,6 +131,6 @@ ln -s ${ROOT_DIR}/share ~/
 # shell history for erl / iex
 # https://github.com/ferd/erlang-history
 cd /var/tmp && \
-    git clone ferd/erlang-history && \
+    git clone https://github.com/ferd/erlang-history.git && \
     cd erlang-history && \
     sudo make install
