@@ -28,6 +28,7 @@
     "guest_os_type": "Debian_64",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
+    "ssh_timeout": "30m",
     "shutdown_command": "echo 'vagrant'|sudo -S /sbin/shutdown -hP now"
   }],
   "post-processors": [{
