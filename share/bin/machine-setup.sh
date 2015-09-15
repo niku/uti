@@ -121,6 +121,7 @@ brew cask install google-hangouts
 brew cask install genymotion
 brew cask install xquartz
 brew cask install kindle
+brew cask install skype
 
 brew cleanup
 brew cask cleanup
