@@ -381,6 +381,13 @@
     (interactive)
     (jk/moz-get-current 'jk/moz-get-current-title)))
 
+;;; logalimacs
+(el-get-bundle logalimacs)
+(use-package logalimacs
+  :bind
+  (("M-g M-a" . loga-add)
+   ("C-t" . loga-lookup-in-popup)))
+
 ;;;
 ;;; 言語別設定
 ;;;
