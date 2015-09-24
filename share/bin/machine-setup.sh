@@ -53,6 +53,7 @@ brew install tmux
 brew install mosh
 brew install gnupg
 brew install ricty
+brew install ssh-copy-id
 brew install emacs --with-cocoa --with-librsvg
 brew link emacs
 brew linkapps emacs --local
