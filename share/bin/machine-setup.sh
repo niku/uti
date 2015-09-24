@@ -37,6 +37,7 @@ brew update
 
 brew tap homebrew/binary
 brew tap homebrew/versions
+brew tap homebrew/devel-only
 brew tap caskroom/homebrew-cask
 brew tap aereal/aereal_casks
 brew tap sanemat/font
@@ -79,6 +80,7 @@ npm install -g source-map-support
 npm install -g grunt-cli
 npm install -g typescript-tools
 brew install erlang
+brew install --devel homebrew/devel-only/rebar3
 brew install elixir
 brew install go
 brew install graphviz
