@@ -60,7 +60,6 @@ brew tap homebrew/binary
 brew tap homebrew/versions
 brew tap homebrew/devel-only
 brew tap caskroom/homebrew-cask
-brew tap aereal/aereal_casks
 brew tap sanemat/font
 
 brew install brew-cask
@@ -71,7 +70,6 @@ brew install zsh
 brew install git
 brew install cmake
 brew install tmux
-brew install mosh
 brew install gnupg
 brew install ricty
 brew install ssh-copy-id
@@ -85,7 +83,6 @@ brew install curl
 brew install packer
 brew install readline
 brew install rbenv
-brew install rbenv-default-gems
 brew install ruby-build
 brew install postgres
 brew install redis
@@ -124,13 +121,8 @@ brew install rlwrap
 brew install poppler
 brew cask install java
 brew cask install karabiner
-brew cask install aquaskk
 brew cask install virtualbox
 brew cask install vagrant
-vagrant plugin install vagrant-omnibus
-vagrant plugin install vagrant-aws
-vagrant plugin install vagrant-itamae
-brew cask install td-agent
 brew cask install dash
 brew cask install dropbox
 brew cask install evernote
@@ -143,7 +135,6 @@ brew cask install alfred
 brew cask install google-drive
 brew cask install google-hangouts
 brew cask install genymotion
-brew cask install xquartz
 brew cask install kindle
 brew cask install skype
 
