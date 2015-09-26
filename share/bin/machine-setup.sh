@@ -3,25 +3,46 @@
 # OSX 環境構築用スクリプト
 #
 
-# Homebrew をインストールするまで
-# https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/Installation.md#installation
+############
+# 手動処理 #
+############
+
+# XCode をインストールする
 #
 # 1.
-# XCODE をインストール
+# Command Line Tools for Xcode をインストール．
+# その際に Xcode 本体もインストールできる．
+# $ sudo xcode-select --install
+#
+# 1-2.
+# (もしインストールできなければ) Xcode をインストール
 # https://itunes.apple.com/us/app/xcode/id497799835
 #
 # 2.
 # XCODE のライセンスに同意
-# $ xcodebuild -license
+# $ sudo xcodebuild -license
+
+# XQuartz をインストールする
+# http://xquartz.macosforge.org/landing/
+
+# Homebrew をインストールする
+# https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/Installation.md#installation
 #
-# 3.
-# Command Line Tools for Xcode をインストール
-# $ xcode-select --install
-#
-# 4.
-# Homebrew をインストール
 # $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# AquaSKK をインストールする
+# https://github.com/codefirst/aquaskk
 #
+# https://github.com/codefirst/aquaskk/releases/download/4.2.6/AquaSKK-4.2.6.dmg
+
+# iTerm2 をインストールする
+# http://mzp.hatenablog.com/entry/2015/03/15/213219
+#
+# https://github.com/mzp/iTerm2/releases/download/AquaSKK/iTerm2.zip
+
+############
+# 自動処理 #
+############
 
 # Homebrew Cask でのアプリのインストール先を ~/Applications から /Applications へと変更する
 # https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md#options
