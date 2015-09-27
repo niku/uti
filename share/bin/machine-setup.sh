@@ -22,9 +22,6 @@
 # XCODE のライセンスに同意
 # $ sudo xcodebuild -license
 
-# XQuartz をインストールする
-# http://xquartz.macosforge.org/landing/
-
 # Homebrew をインストールする
 # https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/Installation.md#installation
 #
@@ -51,6 +48,7 @@ HOMEBREW_CASK_OPTS="--appdir=/Applications"
 brew update
 
 brew install brew-cask
+brew cask install xquartz
 brew cask install java
 brew cask install karabiner
 brew cask install virtualbox
