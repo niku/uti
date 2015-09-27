@@ -85,7 +85,9 @@ brew install git
 brew install cmake
 brew install tmux
 brew install gnupg
-brew install ricty
+brew install ricty && \
+    cp -f /usr/local/Cellar/ricty/*/share/fonts/Ricty*.ttf ~/Library/Fonts/ && \
+    fc-cache -vf
 brew install ssh-copy-id
 brew install emacs --with-cocoa --with-librsvg
 brew link emacs
