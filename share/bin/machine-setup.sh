@@ -89,7 +89,7 @@ brew install ricty
 brew install ssh-copy-id
 brew install emacs --with-cocoa --with-librsvg
 brew link emacs
-brew linkapps emacs --local
+brew linkapps emacs
 brew install cask
 brew install cmigemo
 brew link cmigemo
