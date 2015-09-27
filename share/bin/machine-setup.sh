@@ -56,13 +56,31 @@ ROOT_DIR=`cd -P "${SCRIPT_DIR}/../.."; pwd`
 
 brew update
 
+brew install brew-cask
+brew cask install java
+brew cask install karabiner
+brew cask install virtualbox
+brew cask install vagrant
+brew cask install dash
+brew cask install dropbox
+brew cask install evernote
+brew cask install skitch
+brew cask install onepassword
+brew cask install firefox
+brew cask install google-chrome
+brew cask install libreoffice
+brew cask install alfred
+brew cask install google-drive
+brew cask install google-hangouts
+brew cask install genymotion
+brew cask install kindle
+brew cask install skype
+brew cask cleanup
+
 brew tap homebrew/binary
 brew tap homebrew/versions
 brew tap homebrew/devel-only
-brew tap caskroom/homebrew-cask
 brew tap sanemat/font
-
-brew install brew-cask
 brew install coreutils
 brew install texinfo
 brew link texinfo --force
@@ -119,27 +137,8 @@ brew install clojurescript
 brew install leiningen
 brew install rlwrap
 brew install poppler
-brew cask install java
-brew cask install karabiner
-brew cask install virtualbox
-brew cask install vagrant
-brew cask install dash
-brew cask install dropbox
-brew cask install evernote
-brew cask install skitch
-brew cask install onepassword
-brew cask install firefox
-brew cask install google-chrome
-brew cask install libreoffice
-brew cask install alfred
-brew cask install google-drive
-brew cask install google-hangouts
-brew cask install genymotion
-brew cask install kindle
-brew cask install skype
 
 brew cleanup
-brew cask cleanup
 
 ln -s ${ROOT_DIR}/.emacs.d ~/
 ln -s ${ROOT_DIR}/share ~/
