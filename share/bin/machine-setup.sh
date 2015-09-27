@@ -37,6 +37,11 @@
 #
 # https://github.com/mzp/iTerm2/releases/download/AquaSKK/iTerm2.zip
 
+# 1Password(4.x) をインストールする
+# https://agilebits.com/downloads
+#
+# https://d13itkw33a7sus.cloudfront.net/dist/1P/mac4/1Password-4.4.3.zip
+
 ############
 # 自動処理 #
 ############
@@ -57,7 +62,6 @@ brew cask install dash
 brew cask install dropbox
 brew cask install evernote
 brew cask install skitch
-brew cask install onepassword
 brew cask install firefox
 brew cask install google-chrome
 brew cask install libreoffice
