@@ -214,6 +214,16 @@
    ("M-%" . helm-regexp)
    ("<help> a" . helm-apropos))
   :config
+  (custom-set-variables
+   ;; OSX のときは helm-locate でファイルを検索するときに Spotlight を使う
+   ;; https://github.com/xiaohanyu/oh-my-emacs/issues/59
+   '(helm-locate-command
+     (case system-type
+       ('gnu/linux "locate -i -r %s")
+       ('berkeley-unix "locate -i %s")
+       ('windows-nt "es %s")
+       ('darwin "mdfind -name %s %s")
+       (t "locate %s"))))
   (bind-keys :map helm-map
              ("C-h" . delete-backward-char))
   ;; 非同期読み込みにしていると，読み込みのタイミングによっては
