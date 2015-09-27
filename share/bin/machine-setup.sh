@@ -48,12 +48,6 @@
 # https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md#options
 HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-# このリポジトリのルートパスを設定する
-# http://qiita.com/yudoufu/items/48cb6fb71e5b498b2532
-# http://freak-da.hatenablog.com/entry/20121023/p1
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE:-${(%):-%N}}")"; pwd)" # このファイルの場所
-ROOT_DIR=`cd -P "${SCRIPT_DIR}/../.."; pwd`
-
 brew update
 
 brew install brew-cask
@@ -139,9 +133,6 @@ brew install rlwrap
 brew install poppler
 
 brew cleanup
-
-ln -s ${ROOT_DIR}/.emacs.d ~/
-ln -s ${ROOT_DIR}/share ~/
 
 # shell history for erl / iex
 # https://github.com/ferd/erlang-history
