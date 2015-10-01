@@ -579,6 +579,12 @@
   (custom-set-variables
    '(js-indent-level 2)))
 
+;;; Erlang
+(el-get-bundle erlang)
+(use-package erlang
+  :config
+  (require 'erlang-start))
+
 ;;; Elixir
 (el-get-bundle elixir)
 (use-package elixir-mode)
