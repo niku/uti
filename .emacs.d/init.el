@@ -203,6 +203,12 @@
     (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history))
   (add-hook 'eshell-mode-hook 'eshell-mode-hook-for-helm-eshell-history))
 
+;; yasnippet
+(el-get-bundle yasnippet)
+(use-package yasnippet
+  :config
+  (yas-global-mode 1))
+
 ;; helm
 (el-get-bundle helm)
 (use-package helm
@@ -302,12 +308,6 @@
 (use-package projectile
   :bind
   (("M-g M-r" . projectile-grep)))
-
-;; yasnippet
-(el-get-bundle yasnippet)
-(use-package yasnippet
-  :config
-  (yas-global-mode 1))
 
 ;; 補完機能を利用する
 (el-get-bundle auto-complete
