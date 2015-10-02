@@ -52,7 +52,7 @@ HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 brew update
 
-brew install brew-cask
+brew install caskroom/cask/brew-cask
 brew cask install xquartz
 brew cask install java
 brew cask install karabiner
