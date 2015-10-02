@@ -144,3 +144,9 @@ cd /var/tmp && \
     git clone https://github.com/ferd/erlang-history.git && \
     cd erlang-history && \
     sudo make install
+
+# Mac のディレクトリを英語にする
+# http://qiita.com/is0me/items/0b7b846f1f0860629950
+cd /System/Library/CoreServices/SystemFolderLocalizations/ja.lproj && \
+    sudo mv SystemFolderLocalizations.strings SystemFolderLocalizations.strings.back && \
+    sudo cp ../en.lproj/SystemFolderLocalizations.strings .
