@@ -231,7 +231,7 @@
   ;; 同期的に読み込まれるようにする
   :demand t)
 
-(el-get-bundle helm-migemo)
+(el-get-bundle emacs-jp/helm-migemo)
 (use-package helm-migemo
   :config
   ;; Patch from http://rubikitch.com/2014/12/19/helm-migemo/
@@ -271,7 +271,7 @@
   (helm-descbinds-mode))
 
 ;; yasnippet のテンプレート一覧を helm で見られるようにする
-(el-get-bundle helm-c-yasnippet)
+(el-get-bundle emacs-jp/helm-c-yasnippet)
 (use-package helm-c-yasnippet
   :bind
   (("C-c y" . helm-yas-complete)))
