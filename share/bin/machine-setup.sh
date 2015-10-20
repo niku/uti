@@ -71,6 +71,7 @@ brew cask install google-hangouts
 brew cask install genymotion
 brew cask install kindle
 brew cask install skype
+brew cask install gfxcardstatus
 brew cask cleanup
 
 brew tap homebrew/binary
