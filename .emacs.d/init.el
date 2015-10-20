@@ -594,6 +594,12 @@
   :depends (company-mode))
 (use-package alchemist)
 
+;; alchemist の補完を auto-complete で行える
+(el-get-bundle ac-alchemist)
+(use-package ac-alchemist
+  :config
+  (add-hook 'elixir-mode-hook 'ac-alchemist-setup))
+
 ;;; TypeScript
 (el-get-bundle tss
   :depends
