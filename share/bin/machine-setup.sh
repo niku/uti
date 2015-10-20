@@ -121,6 +121,7 @@ brew install elixir
 brew install go
 brew install graphviz
 brew install hub
+brew install gist
 brew install mplayer
 brew install heroku-toolbelt
 brew install awscli
