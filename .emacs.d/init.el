@@ -597,7 +597,11 @@
   (custom-set-variables
    ; https://github.com/tonini/alchemist.el/issues/71
    '(alchemist-goto-elixir-source-dir "~/src/elixir")
-   '(alchemist-goto-erlang-source-dir "~/src/otp")))
+   '(alchemist-goto-erlang-source-dir "~/src/otp"))
+  ; https://github.com/tonini/alchemist.el#definition-lookup
+  (defun custom-erlang-mode-hook ()
+    (define-key erlang-mode-map (kbd "M-,") 'alchemist-goto-jump-back))
+  (add-hook 'erlang-mode-hook 'custom-erlang-mode-hook))
 
 ;; alchemist の補完を auto-complete で行える
 (el-get-bundle ac-alchemist)
