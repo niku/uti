@@ -592,7 +592,12 @@
 ;; Elixir の mix や iex などを Emacs から使えるようにしてくれる
 (el-get-bundle alchemist
   :depends (company-mode))
-(use-package alchemist)
+(use-package alchemist
+  :config
+  (custom-set-variables
+   ; https://github.com/tonini/alchemist.el/issues/71
+   '(alchemist-goto-elixir-source-dir "~/src/elixir")
+   '(alchemist-goto-erlang-source-dir "~/src/otp")))
 
 ;; alchemist の補完を auto-complete で行える
 (el-get-bundle ac-alchemist)
