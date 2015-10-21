@@ -312,7 +312,10 @@
 ;; 補完機能を利用する
 (el-get-bundle auto-complete
   :depends (popup))
-(use-package auto-complete)
+(use-package auto-complete
+  :config
+  (custom-set-variables
+   '(ac-quick-help-delay 0.3)))
 
 ;; 一時的なウィンドウをポップアップで開く
 (el-get-bundle popwin)
