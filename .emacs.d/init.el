@@ -296,8 +296,7 @@
   :init
   (add-hook 'after-init-hook 'global-flycheck-mode))
 
-(el-get-bundle flycheck-pos-tip
-  :depends (flycheck popup))
+(el-get-bundle flycheck-pos-tip)
 (use-package flycheck-pos-tip
   :config
   '(custom-set-variables
