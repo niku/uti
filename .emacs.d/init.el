@@ -12,6 +12,10 @@
 (el-get-bundle use-package)
 (require 'use-package)
 
+;;; Emacs25からは標準添付される，Sequenceを操作するためのライブラリ
+(unless (<= 25 emacs-major-version)
+  (el-get-bundle seq))
+
 ;;;
 ;;; 便利なAPIを設定の記述に使いたいので先に読み込んでおく
 ;;;
