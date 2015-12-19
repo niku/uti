@@ -98,6 +98,7 @@ brew install cmigemo
 brew link cmigemo
 brew install curl
 brew install packer
+brew install docker-compose
 brew install readline
 brew install rbenv
 brew install ruby-build
