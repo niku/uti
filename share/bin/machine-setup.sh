@@ -101,7 +101,7 @@ brew install packer
 brew install docker-compose
 brew install readline
 brew install rbenv
-brew install ruby-build
+brew install ruby-build --HEAD
 brew install postgres
 brew install redis
 brew install the_silver_searcher
