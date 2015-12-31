@@ -607,7 +607,9 @@
   ; https://github.com/tonini/alchemist.el#definition-lookup
   (defun custom-erlang-mode-hook ()
     (define-key erlang-mode-map (kbd "M-,") 'alchemist-goto-jump-back))
-  (add-hook 'erlang-mode-hook 'custom-erlang-mode-hook))
+  (add-hook 'erlang-mode-hook 'custom-erlang-mode-hook)
+  :bind
+  (("C-9" . alchemist-project-toggle-file-and-tests)))
 
 ;; alchemist の補完を auto-complete で行える
 (el-get-bundle ac-alchemist)
