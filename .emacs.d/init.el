@@ -408,6 +408,12 @@
   (("M-g M-a" . loga-add)
    ("C-t" . loga-lookup-in-popup)))
 
+;;; epc
+;; https://github.com/kiwanami/emacs-epc
+;; Emacsで他の言語とRPC(ja) http://qiita.com/kiwanami/items/939fab6ac6588d72edbd
+(el-get-bundle epc)
+(use-package epc)
+
 ;;;
 ;;; 言語別設定
 ;;;
