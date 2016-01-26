@@ -313,12 +313,10 @@
   (("M-g M-r" . projectile-grep)))
 
 ;; 補完機能を利用する
-(el-get-bundle auto-complete
-  :depends (popup))
-(use-package auto-complete
-  :config
-  (custom-set-variables
-   '(ac-quick-help-delay 0.3)))
+(el-get-bundle company-mode)
+(use-package company-mode
+  :init
+  (global-company-mode 1))
 
 ;; 一時的なウィンドウをポップアップで開く
 (el-get-bundle popwin)
@@ -602,8 +600,7 @@
 (use-package elixir-mode)
 
 ;; Elixir の mix や iex などを Emacs から使えるようにしてくれる
-(el-get-bundle alchemist
-  :depends (company-mode))
+(el-get-bundle alchemist)
 (use-package alchemist
   :config
   (custom-set-variables
@@ -616,23 +613,6 @@
   (add-hook 'erlang-mode-hook 'custom-erlang-mode-hook)
   :bind
   (("C-9" . alchemist-project-toggle-file-and-tests)))
-
-;; alchemist の補完を auto-complete で行える
-(el-get-bundle ac-alchemist)
-(use-package ac-alchemist
-  :config
-  (add-hook 'elixir-mode-hook 'ac-alchemist-setup))
-
-;;; TypeScript
-(el-get-bundle tss
-  :depends
-  (auto-complete json-mode log4e yaxception))
-(use-package typescript-mode
-  :mode
-  (("\\.ts\\'" . typescript-mode)))
-(use-package tss
-  :config
-  (tss-config-default))
 
 ;;; Clojure
 (el-get-bundle clojure-mode)
