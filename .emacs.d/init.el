@@ -316,7 +316,10 @@
 (el-get-bundle company-mode)
 (use-package company-mode
   :init
-  (global-company-mode 1))
+  (global-company-mode 1)
+  (bind-keys :map company-active-map
+             ;; C-hはヘルプではなく削除に割り当てる
+             ("C-h" . nil)))
 
 ;; 一時的なウィンドウをポップアップで開く
 (el-get-bundle popwin)
