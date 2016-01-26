@@ -611,8 +611,8 @@
   (defun custom-erlang-mode-hook ()
     (define-key erlang-mode-map (kbd "M-,") 'alchemist-goto-jump-back))
   (add-hook 'erlang-mode-hook 'custom-erlang-mode-hook)
-  :bind
-  (("C-9" . alchemist-project-toggle-file-and-tests)))
+  (bind-keys :map alchemist-mode-map
+             ("C-9" . alchemist-project-toggle-file-and-tests)))
 
 ;;; Clojure
 (el-get-bundle clojure-mode)
