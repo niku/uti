@@ -318,8 +318,15 @@
   :init
   (global-company-mode 1)
   (bind-keys :map company-active-map
+             ;; C-sで絞り込む
+             ("C-s" . company-filter-candidates)
              ;; C-hはヘルプではなく削除に割り当てる
-             ("C-h" . nil)))
+             ("C-h" . nil)
+             ;; 1つしか候補がなかったらtabで補完，複数候補があれば次の候補を選択
+             ("<tab>" . company-complete-common-or-cycle))
+  (custom-set-variables
+   ;; 補完を1文字目から始める
+   '(company-minimum-prefix-length 1)))
 
 ;; 一時的なウィンドウをポップアップで開く
 (el-get-bundle popwin)
