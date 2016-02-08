@@ -585,6 +585,15 @@
     (ruby-block-mode t))
   (add-hook 'ruby-mode-hook 'ruby-mode-hooks-for-ruby-block-mode))
 
+;; RSpec
+(el-get-bundle rspec-mode)
+(use-package rspec-mode
+  :config
+  (with-eval-after-load 'rspec-mode
+    '(rspec-install-snippets))
+  (bind-keys :map rspec-mode
+             ("C-9" . rspec-toggle-spec-and-target)))
+
 ;;; JavaScript
 (use-package js-mode
   :mode
