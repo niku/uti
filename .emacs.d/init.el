@@ -537,7 +537,8 @@
   (add-hook 'sql-interactive-mode-hook 'sql-interactive-mode-hooks))
 
 ;; sqlファイルのインデントを整える
-(el-get-bundle sql-indent
+(el-get-bundle emacswiki:sql-complete)
+(el-get-bundle emacswiki:sql-indent
   :depends
   (sql-complete))
 (use-package sql-indent)
