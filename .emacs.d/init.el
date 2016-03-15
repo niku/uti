@@ -403,6 +403,10 @@
 (el-get-bundle epc)
 (use-package epc)
 
+;;; restclient (EmacsからHTTPリクエストを発行，結果を見る)
+;; https://github.com/pashky/restclient.el
+(el-get-bundle restclient)
+
 ;;;
 ;;; 言語別設定
 ;;;
@@ -437,6 +441,7 @@
 
 ;; org-babel
 (el-get-bundle victorolinasc/ob-elixir) ; org-babel で Elixir を扱う
+(el-get-bundle ob-restclient) ; org-babel で restclient を扱う
 (use-package ob
   :init
   ;; org-babelで使う言語を設定する
@@ -444,7 +449,8 @@
    'org-babel-load-languages
    '((emacs-lisp . t)
      (ruby . t)
-     (elixir . t)))
+     (elixir . t)
+     (restclient . t)))
   :config
   ;; org-babel tangle でソースコードを書き出す時に先頭の1行をあけない
   (add-to-list 'org-babel-default-header-args '(:padline . "no"))
