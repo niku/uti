@@ -115,6 +115,7 @@ npm install -g jsonlint
 npm install -g jsdoc
 npm install -g source-map-support
 npm install -g grunt-cli
+npm install -g typescript
 npm install -g typescript-tools
 brew install erlang
 brew install --devel homebrew/devel-only/rebar3

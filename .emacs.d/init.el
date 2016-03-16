@@ -596,6 +596,19 @@
   (custom-set-variables
    '(js-indent-level 2)))
 
+;;; TypeScript
+(el-get-bundle typescript-mode)
+(el-get-bundle tide)
+(use-package tide
+  :config
+  (defun typescript-mode-hooks-for-tide ()
+    (tide-setup)
+    (flycheck-mode t)
+    (setq flycheck-check-syntax-automatically '(save mode-enabled))
+    (eldoc-mode t)
+    (company-mode-on))
+  (add-hook 'typescript-mode-hook 'typescript-mode-hooks-for-tide))
+
 ;;; Erlang
 (el-get-bundle erlang)
 (use-package erlang
