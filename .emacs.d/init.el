@@ -151,8 +151,7 @@
   :config
   (custom-set-variables
    '(recentf-max-saved-items nil)
-   '(recentf-exclude '(".recentf"))
-   '(recentf-auto-cleanup 10))
+   '(recentf-exclude '(".recentf")))
   (recentf-mode 1))
 
 (el-get-bundle recentf-ext)
