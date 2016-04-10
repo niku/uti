@@ -121,6 +121,8 @@ brew install erlang
 brew install --devel homebrew/devel-only/rebar3
 brew install elixir
 brew install go
+brew install rust
+cargo install racer
 brew install graphviz
 brew install hub
 brew install gist

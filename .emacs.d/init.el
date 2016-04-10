@@ -637,6 +637,28 @@
 (el-get-bundle clojure-mode)
 (use-package clojure-mode)
 
+;;; Rust
+(el-get-bundle rust-mode)
+(el-get-bundle flycheck-rust)
+(use-package flycheck-rust
+  :config
+  (defun flycheck-mode-hooks-for-flycheck-rust ()
+    (flycheck-rust-setup))
+  (add-hook 'flycheck-mode-hook 'flycheck-mode-hooks-for-flycheck-rust))
+
+(el-get-bundle emacs-racer)
+(use-package racer-mode
+  :init
+  (defun racer-mode-hooks-for-utils ()
+    (eldoc-mode)
+    (company-mode))
+  (add-hook 'racer-mode-hook 'racer-mode-hooks-for-utils)
+  (defun rust-mode-hooks-for-racer-mode ()
+    (racer-mode))
+  (add-hook 'rust-mode-hook 'rust-mode-hooks-for-racer-mode)
+  (custom-set-variables
+   '(racer-rust-src-path "~/src/rust/src")))
+
 ;;;
 ;;; ローカルな環境で利用するようなelisp
 ;;;
