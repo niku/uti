@@ -153,6 +153,12 @@ cd /var/tmp && \
 
 # Mac のディレクトリを英語にする
 # http://qiita.com/is0me/items/0b7b846f1f0860629950
-cd /System/Library/CoreServices/SystemFolderLocalizations/ja.lproj && \
-    sudo mv SystemFolderLocalizations.strings SystemFolderLocalizations.strings.back && \
-    sudo cp ../en.lproj/SystemFolderLocalizations.strings .
+rm ~/Downloads/.localized | \
+    rm ~/Documents/.localized | \
+    rm ~/Applications/.localized | \
+    rm ~/Desktop/.localized | \
+    rm ~/Library/.localized | \
+    rm ~/Movies/.localized | \
+    rm ~/Pictures/.localized | \
+    rm ~/Music/.localized | \
+    rm ~/Public/.localized
