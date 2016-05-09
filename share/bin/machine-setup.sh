@@ -146,7 +146,7 @@ brew cleanup
 # shell history for erl / iex
 # https://github.com/ferd/erlang-history
 cd /var/tmp && \
-    git clone https://github.com/ferd/erlang-history.git && \
+    (git clone https://github.com/ferd/erlang-history.git ||  git -C erlang-history pull) && \
     cd erlang-history && \
     sudo make install
 
