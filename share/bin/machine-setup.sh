@@ -76,7 +76,6 @@ brew cask cleanup
 
 brew tap homebrew/binary
 brew tap homebrew/versions
-brew tap homebrew/devel-only
 brew tap sanemat/font
 brew install coreutils
 brew install texinfo
@@ -118,7 +117,7 @@ npm install -g grunt-cli
 npm install -g typescript
 npm install -g typescript-tools
 brew install erlang
-brew install --devel homebrew/devel-only/rebar3
+brew install rebar3
 brew install elixir
 brew install go
 brew install rust
