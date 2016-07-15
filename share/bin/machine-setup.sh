@@ -72,6 +72,7 @@ brew cask install genymotion
 brew cask install kindle
 brew cask install skype
 brew cask install gfxcardstatus
+brew cask install licecap
 brew cask cleanup
 
 brew tap homebrew/binary
