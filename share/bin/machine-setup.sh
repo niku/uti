@@ -74,6 +74,7 @@ brew cask install skype
 brew cask install gfxcardstatus
 brew cask install licecap
 brew cask install docker
+brew cask install iterm2
 brew cask cleanup
 
 brew tap homebrew/binary
