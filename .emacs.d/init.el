@@ -511,7 +511,8 @@
   ;; 読み込み後(config:)に設定するとうまく動かない
   (custom-set-variables
    ;; 履歴を保存する
-   '(sql-input-ring-file-name "~/.sql-input-ring"))
+   '(sql-input-ring-file-name "~/.sql-input-ring")
+   '(sql-product 'postgres))
 
   (defun sql-interactive-mode-hooks ()
     ;; 横方向に長い場合に折り返さない
