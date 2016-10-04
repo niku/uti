@@ -577,6 +577,15 @@
   (bind-keys :map rspec-mode
              ("C-9" . rspec-toggle-spec-and-target)))
 
+;;; Web
+(el-get-bundle web-mode)
+(use-package web-mode
+  :mode
+  (("\\.html?\\'" . web-mode))
+  :config
+  (custom-set-variables
+   '(web-mode-markup-indent-offset 2)))
+
 ;;; JavaScript
 (use-package js-mode
   :mode
