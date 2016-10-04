@@ -92,7 +92,7 @@ brew install ricty && \
     cp -f /usr/local/Cellar/ricty/*/share/fonts/Ricty*.ttf ~/Library/Fonts/ && \
     fc-cache -vf
 brew install ssh-copy-id
-brew install emacs --with-cocoa --with-librsvg
+brew install emacs --with-cocoa --with-gnutls --with-imagemagick --with-modules
 brew link emacs
 brew linkapps emacs
 brew install cask
