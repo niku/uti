@@ -508,6 +508,7 @@
   (markdown-mode))
 
 ;;; SQL
+(el-get-bundle sqlup-mode)
 (use-package sql
   :init
   ;; 読み込み後(config:)に設定するとうまく動かない
@@ -516,9 +517,14 @@
    '(sql-input-ring-file-name "~/.sql-input-ring")
    '(sql-product 'postgres))
 
+  (defun sql-mode-hooks ()
+    (sqlup-mode))
+
   (defun sql-interactive-mode-hooks ()
     ;; 横方向に長い場合に折り返さない
-    (toggle-truncate-lines t))
+    (toggle-truncate-lines t)
+    (sqlup-mode))
+  (add-hook 'sql-mode-hook 'sql-mode-hooks)
   (add-hook 'sql-interactive-mode-hook 'sql-interactive-mode-hooks))
 
 ;; sqlファイルのインデントを整える
