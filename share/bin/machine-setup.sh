@@ -125,6 +125,7 @@ brew install go
 brew install rust
 cargo install racer
 brew install graphviz
+brew install plantuml
 brew install hub
 brew install gist
 brew install mpv

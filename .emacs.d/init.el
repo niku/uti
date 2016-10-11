@@ -434,11 +434,14 @@
    ;; orgファイルの中で画像をインライン表示する
    '(org-startup-with-inline-images t)
    ;; src ブロックの中を色付けする
-   '(org-src-fontify-natively t)))
+   '(org-src-fontify-natively t)
+   ;; plantumlで利用する
+   '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/8046/plantuml.8046.jar")))
 
 ;; org-babel
 (el-get-bundle victorolinasc/ob-elixir) ; org-babel で Elixir を扱う
-(el-get-bundle ob-restclient) ; org-babel で restclient を扱う
+(el-get-bundle alf/ob-restclient.el) ; org-babel で restclient を扱う
+
 (use-package ob
   :init
   ;; org-babelで使う言語を設定する
@@ -447,7 +450,8 @@
    '((emacs-lisp . t)
      (ruby . t)
      (elixir . t)
-     (restclient . t)))
+     (restclient . t)
+     (plantuml . t)))
   :config
   ;; org-babel tangle でソースコードを書き出す時に先頭の1行をあけない
   (add-to-list 'org-babel-default-header-args '(:padline . "no"))
