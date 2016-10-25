@@ -426,9 +426,10 @@
   :bind
   (("C-c c" . org-capture))
   :init
-  (defun org-mode-hooks-for-skk-mode ()
-    (skk-mode 1))
-  (add-hook 'org-mode-hook 'org-mode-hooks-for-skk-mode)
+  (defun org-mode-hooks ()
+    (skk-mode 1)
+    (org-display-inline-images))
+  (add-hook 'org-mode-hook 'org-mode-hooks)
   :config
   (custom-set-variables
    ;; orgファイルの中で画像をインライン表示する
@@ -452,6 +453,9 @@
      (elixir . t)
      (restclient . t)
      (plantuml . t)))
+  (defun org-babel-after-execute-hooks ()
+    (org-display-inline-images))
+  (add-hook 'org-babel-after-execute-hook 'org-babel-after-execute-hooks)
   :config
   ;; org-babel tangle でソースコードを書き出す時に先頭の1行をあけない
   (add-to-list 'org-babel-default-header-args '(:padline . "no"))
