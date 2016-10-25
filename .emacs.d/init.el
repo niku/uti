@@ -432,6 +432,8 @@
   (add-hook 'org-mode-hook 'org-mode-hooks)
   :config
   (custom-set-variables
+   ;; orgファイルを開いたときに畳んだ状態で表示しない（全て表示する）
+   '(org-startup-folded nil)
    ;; orgファイルの中で画像をインライン表示する
    '(org-startup-with-inline-images t)
    ;; src ブロックの中を色付けする
