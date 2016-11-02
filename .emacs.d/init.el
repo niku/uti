@@ -465,6 +465,14 @@
    ;; コードを評価するときに尋ねない
    '(org-confirm-babel-evaluate nil)))
 
+;;; PlantUML
+(el-get-bundle skuro/plantuml-mode)
+(use-package plantuml-mode
+  :config
+  (custom-set-variables
+   '(plantuml-output-type "png") ;; FIXME pngだと期待通りの画像が表示されない
+   '(plantuml-jar-path "/usr/local/Cellar/plantuml/8048/plantuml.8048.jar")))
+
 ;;; Nikulog
 
 (setq nikulog-path "~/nikulog")
