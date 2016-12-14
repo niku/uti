@@ -696,6 +696,17 @@
   (custom-set-variables
    '(racer-rust-src-path "~/src/rust/src")))
 
+;;; Elm
+(el-get-bundle elm-mode)
+(use-package elm-mode
+  :config
+  (custom-set-variables
+   '(elm-tags-on-save t)
+   '(elm-format-on-save t))
+  (defun elm-mode-hooks-for-elm-mode ()
+    (add-to-list 'company-backends 'company-elm))
+  (add-hook 'elm-mode-hook 'elm-mode-hooks-for-elm-mode))
+
 ;;;
 ;;; ローカルな環境で利用するようなelisp
 ;;;

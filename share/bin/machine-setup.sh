@@ -118,6 +118,7 @@ npm install -g source-map-support
 npm install -g grunt-cli
 npm install -g typescript
 npm install -g typescript-tools
+npm install -g elm-oracle
 brew install erlang
 brew install rebar3
 brew install elixir
