@@ -286,8 +286,8 @@
 (el-get-bundle flycheck-pos-tip)
 (use-package flycheck-pos-tip
   :config
-  '(custom-set-variables
-    '(flycheck-display-errors-function 'flycheck-pos-tip-error-messages)))
+  (custom-set-variables
+   '(flycheck-display-errors-function 'flycheck-pos-tip-error-messages)))
 
 ;; projectile
 (el-get-bundle projectile)
