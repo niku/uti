@@ -530,6 +530,10 @@
   :commands
   (markdown-mode))
 
+;;; Mustache
+(el-get-bundle mustache-mode)
+(use-package mustache-mode)
+
 ;;; SQL
 (el-get-bundle sqlup-mode)
 (use-package sql
