@@ -76,6 +76,7 @@ brew cask install licecap
 brew cask install docker
 brew cask install iterm2
 brew cask install intellij-idea
+brew cask install focus
 brew cask cleanup
 
 brew tap homebrew/binary
