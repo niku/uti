@@ -101,6 +101,7 @@ brew install cask
 brew install cmigemo
 brew link cmigemo
 brew install curl
+brew install terminal-notifier
 brew install packer
 brew install readline
 brew install rbenv
