@@ -444,7 +444,7 @@
    ;; src ブロックの中を色付けする
    '(org-src-fontify-natively t)
    ;; plantumlで利用する
-   '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/8053/libexec/plantuml.jar")))
+   '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/8059/libexec/plantuml.jar")))
 
 ;; org-babel
 (el-get-bundle victorolinasc/ob-elixir) ; org-babel で Elixir を扱う
