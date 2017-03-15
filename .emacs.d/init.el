@@ -447,8 +447,8 @@
    '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/8059/libexec/plantuml.jar")))
 
 ;; org-babel
-(el-get-bundle victorolinasc/ob-elixir) ; org-babel で Elixir を扱う
-(el-get-bundle alf/ob-restclient.el) ; org-babel で restclient を扱う
+(el-get-bundle ob-elixir) ; org-babel で Elixir を扱う
+(el-get-bundle ob-restclient) ; org-babel で restclient を扱う
 
 (use-package ob
   :init
