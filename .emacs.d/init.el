@@ -41,7 +41,7 @@
 ;; custom-set-variable の設定を書き出すファイルを init.el から移す
 (let ((custom-set-variable-file (expand-file-name "custom-set-variables.el" user-emacs-directory)))
   (when (f-readable? custom-set-variable-file)
-    (load custom-file)))
+    (load custom-set-variable-file)))
 
 (setq inhibit-startup-screen t)         ; startupの画面を消す
 (setq initial-scratch-message nil)      ; *scratch*のメッセージを消す
