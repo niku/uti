@@ -23,8 +23,8 @@
     "guest_os_type": "Debian_64",
     "http_directory": ".",
     "iso_checksum_type": "sha512",
-    "iso_checksum": "6c3b53d2a33e34644153683f4492a7773340812c540eb3c5fdeee61e0c8dbafb2f9d634db0d2518b44fbf16770ec15f80561b49c280e27984e887ac71bfb3c3a",
-    "iso_url": "http://cdimage.debian.org/debian-cd/8.6.0/amd64/iso-cd/debian-8.6.0-amd64-netinst.iso",
+    "iso_checksum": "534795785d2706e64e3a4dff9648fd0302a1272c668a99a81ba3a984695986ac814d8193c5335bd13dce0592fc470eebe9fc4a6c9991f87a6686329a667ac30d",
+    "iso_url": "http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-8.7.1-amd64-netinst.iso",
     "guest_os_type": "Debian_64",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
@@ -33,7 +33,7 @@
   }],
   "post-processors": [{
     "type": "vagrant",
-    "output": "debian-8.6.0-amd64.box"
+    "output": "debian-8.7.1-amd64.box"
   }],
   "provisioners": [{
     "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash '{{.Path}}'",
