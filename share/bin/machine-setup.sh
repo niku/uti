@@ -89,7 +89,7 @@ brew install zsh
 brew install git
 brew install cmake
 brew install tmux
-brew install gnupg
+brew install gpg1
 brew install ricty && \
     cp -f /usr/local/Cellar/ricty/*/share/fonts/Ricty*.ttf ~/Library/Fonts/ && \
     fc-cache -vf

@@ -143,6 +143,11 @@
 (el-get-bundle wgrep)
 (use-package wgrep)
 
+(use-package epg
+  :config
+  (custom-set-variables
+   '(epg-gpg-program "gpg1")))
+
 ;; GUI Emacs での Path を shell と同期させる
 (el-get-bundle exec-path-from-shell)
 (use-package exec-path-from-shell
