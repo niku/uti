@@ -284,9 +284,9 @@
 
 ;; flycheck
 (el-get-bundle flycheck)
+; http://www.flycheck.org/en/latest/user/installation.html#use-package
 (use-package flycheck
-  :init
-  (add-hook 'after-init-hook 'global-flycheck-mode))
+  :init (global-flycheck-mode))
 
 (el-get-bundle flycheck-pos-tip)
 (use-package flycheck-pos-tip
