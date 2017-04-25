@@ -294,6 +294,14 @@
   (custom-set-variables
    '(flycheck-display-errors-function 'flycheck-pos-tip-error-messages)))
 
+;;; インデントを強調表示する
+;; (browse-url "https://github.com/antonj/Highlight-Indentation-for-Emacs")
+(el-get-bundle highlight-indentation)
+(use-package highlight-indentation
+  :config
+  (add-hook 'prog-mode-hook #'highlight-indentation-mode)
+  (add-hook 'yaml-mode-hook #'highlight-indentation-mode))
+
 ;; projectile
 (el-get-bundle projectile)
 (use-package projectile
