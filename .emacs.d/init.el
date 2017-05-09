@@ -221,7 +221,8 @@
   (yas-global-mode 1))
 
 ;; helm
-(el-get-bundle helm)
+(el-get-bundle helm
+  :depends (emacs-async))
 (use-package helm
   :bind
   (("M-x" . helm-M-x)
