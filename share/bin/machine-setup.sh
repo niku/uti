@@ -148,6 +148,7 @@ brew install clojurescript
 brew install leiningen
 brew install rlwrap
 brew install poppler
+brew install terraform
 
 brew cleanup
 
