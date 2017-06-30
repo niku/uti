@@ -17,6 +17,7 @@
         "console-setup/ask_detect=false <wait>",
         "console-keymaps-at/keymap=us <wait>",
         "grub-installer/bootdev=/dev/sda <wait>",
+        "DEBCONF_DEBUG=5 <wait>",
         "<enter><wait>"
       ],
       "boot_wait": "10s",
@@ -84,7 +85,7 @@
     }
   ],
   "variables": {
-    "box_basename": "debian-8.7",
+    "box_basename": "debian-9.0.0-amd64",
     "build_timestamp": "{{isotime \"20060102150405\"}}",
     "cpus": "1",
     "disk_size": "40960",
@@ -92,16 +93,16 @@
     "headless": "",
     "http_proxy": "{{env `http_proxy`}}",
     "https_proxy": "{{env `https_proxy`}}",
-    "iso_checksum": "534795785d2706e64e3a4dff9648fd0302a1272c668a99a81ba3a984695986ac814d8193c5335bd13dce0592fc470eebe9fc4a6c9991f87a6686329a667ac30d",
+    "iso_checksum": "08a25863ae2369de462e55b539050dab0adb03262a4aefda208e907ef9ea2fff2158a77f6a6eddb4ac7fbd2fcc9cc64edd34f70e211eceac4bb6f308fefc3f0a",
     "iso_checksum_type": "sha512",
-    "iso_name": "debian-8.7.1-amd64-netinst.iso",
+    "iso_name": "debian-9.0.0-amd64-netinst.iso",
     "memory": "512",
-    "mirror": "http://cdimage.debian.org/cdimage/release",
-    "mirror_directory": "8.7.1/amd64/iso-cd",
-    "name": "debian-8.7",
+    "mirror": "https://cdimage.debian.org",
+    "mirror_directory": "debian-cd/9.0.0/amd64/iso-cd",
+    "name": "debian-9.0.0-amd64",
     "no_proxy": "{{env `no_proxy`}}",
-    "preseed_path": "debian-8/preseed.cfg",
-    "template": "debian-8.7-amd64",
+    "preseed_path": "debian-9/preseed.cfg",
+    "template": "debian-9.0.0-amd64",
     "version": "2.1.TIMESTAMP"
   }
 }

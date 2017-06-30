@@ -1,19 +1,28 @@
 Vagrant.configure(2) do |config|
-  config.vm.box = "builds/debian-8.7.virtualbox.box"
+  config.vm.box = "builds/debian-9.0.0-amd64.virtualbox.box"
   config.vm.provision "shell", inline: <<-SHELL
     sudo update-locale LANG=C.UTF-8
     # Already configured in /etc/sudoers.d/99_vagrant
     # sudo sh -c "echo '${USER} ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/nopasswd" && sudo chmod 0440 /etc/sudoers.d/nopasswd
 
     # https://docs.docker.com/engine/installation/linux/debian/
-    sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common
+    sudo apt-get install -y \
+         apt-transport-https \
+         ca-certificates \
+         curl \
+         gnupg2 \
+         software-properties-common
     curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
-    sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+    sudo add-apt-repository \
+       "deb [arch=amd64] https://download.docker.com/linux/debian \
+       $(lsb_release -cs) \
+       stable"
     sudo apt-get update
     sudo apt-get install -y docker-ce
 
     # https://docs.docker.com/compose/install/
-    sudo curl -L "https://github.com/docker/compose/releases/download/1.11.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    export dockerComposeVersion=1.13.0
+    sudo curl -L https://github.com/docker/compose/releases/download/$dockerComposeVersion/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
   SHELL
 end

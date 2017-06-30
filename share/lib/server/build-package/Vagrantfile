@@ -1,5 +1,5 @@
 Vagrant.configure(2) do |config|
-  config.vm.box = "debian-8.5.0-amd64.box"
+  config.vm.box = "debian-9.0.0-amd64.box"
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
     sudo update-locale LANG=C.UTF-8
     sudo apt-get update
