@@ -77,6 +77,7 @@ brew cask install docker
 brew cask install iterm2
 brew cask install intellij-idea
 brew cask install focus
+brew cask install google-cloud-sdk
 brew cask cleanup
 
 brew tap homebrew/binary
