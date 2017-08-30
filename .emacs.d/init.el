@@ -655,6 +655,8 @@
 (el-get-bundle tide)
 (use-package tide
   :config
+  (custom-set-variables
+   '(typescript-indent-level 2))
   (defun typescript-mode-hooks-for-tide ()
     (tide-setup)
     (flycheck-mode t)
