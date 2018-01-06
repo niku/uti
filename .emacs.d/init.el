@@ -303,11 +303,28 @@
   (add-hook 'prog-mode-hook #'highlight-indentation-mode)
   (add-hook 'yaml-mode-hook #'highlight-indentation-mode))
 
-;; projectile
+;;; projectile
 (el-get-bundle projectile)
 (use-package projectile
+  :init
+  (projectile-mode t)
+  :config
+  (custom-set-variables
+   '(projectile-completion-system 'helm)
+   '(compilation-read-command nil))     ; コマンド実行時にプロンプトを表示しない
   :bind
-  (("M-g M-r" . projectile-grep)))
+  (("M-g M-r" . projectile-grep)
+   ("C-9" . projectile-toggle-between-implementation-and-test)
+   ("C-0" . projectile-test-project)))
+
+;;; compile
+(use-package compile
+  :init
+  ;; (projectileのテスト結果の表示に使う)Compilation Mode のバッファで ANSI Color の表示を有効にする
+  ;; (browse-url "https://stackoverflow.com/a/13408008")
+  (defun colorize-compilation-buffer ()
+    (ansi-color-apply-on-region compilation-filter-start (point)))
+  (add-hook 'compilation-filter-hook 'colorize-compilation-buffer))
 
 ;; 補完機能を利用する
 (el-get-bundle company-mode)
@@ -623,9 +640,7 @@
 (use-package rspec-mode
   :config
   (with-eval-after-load 'rspec-mode
-    '(rspec-install-snippets))
-  (bind-keys :map rspec-mode
-             ("C-9" . rspec-toggle-spec-and-target)))
+    '(rspec-install-snippets)))
 
 ;;; Web
 (el-get-bundle web-mode)
@@ -686,9 +701,7 @@
   ; https://github.com/tonini/alchemist.el#definition-lookup
   (defun custom-erlang-mode-hook ()
     (define-key erlang-mode-map (kbd "M-,") 'alchemist-goto-jump-back))
-  (add-hook 'erlang-mode-hook 'custom-erlang-mode-hook)
-  (bind-keys :map alchemist-mode-map
-             ("C-9" . alchemist-project-toggle-file-and-tests)))
+  (add-hook 'erlang-mode-hook 'custom-erlang-mode-hook))
 
 ;;; Clojure
 (el-get-bundle clojure-mode)
