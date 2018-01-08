@@ -317,6 +317,19 @@
    ("C-9" . projectile-toggle-between-implementation-and-test)
    ("C-0" . projectile-test-project)))
 
+(el-get-bundle helm-projectile)
+(use-package helm-projectile
+  :after
+  ;; helm-for-files -> helm-for-files-preferred-list の読み込みに必要
+  ;; projectile -> helm-source-projectile-files-and-dired-list の読み込みに必要
+  (helm-for-files projectile)
+  :config
+  ;; :custom だと期待通りに動作しなかった
+  (custom-set-variables
+   '(helm-for-files-preferred-list `,(append
+                                      helm-for-files-preferred-list
+                                      helm-source-projectile-files-and-dired-list))))
+
 ;;; compile
 (use-package compile
   :init
