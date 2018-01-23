@@ -729,8 +729,8 @@
     (flycheck-rust-setup))
   (add-hook 'flycheck-mode-hook 'flycheck-mode-hooks-for-flycheck-rust))
 
-(el-get-bundle emacs-racer)
-(use-package racer-mode
+(el-get-bundle racer)
+(use-package racer
   :init
   (defun racer-mode-hooks-for-utils ()
     (eldoc-mode)
@@ -738,9 +738,7 @@
   (add-hook 'racer-mode-hook 'racer-mode-hooks-for-utils)
   (defun rust-mode-hooks-for-racer-mode ()
     (racer-mode))
-  (add-hook 'rust-mode-hook 'rust-mode-hooks-for-racer-mode)
-  (custom-set-variables
-   '(racer-rust-src-path "~/src/rust/src")))
+  (add-hook 'rust-mode-hook 'rust-mode-hooks-for-racer-mode))
 
 ;;; Elm
 (el-get-bundle elm-mode)
