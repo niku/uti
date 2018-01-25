@@ -397,45 +397,6 @@
   (setq twittering-oauth-consumer-key (base64-decode-string "Q2tuVklCTUxVRHdIN01BOXg0V0huZw=="))
   (setq twittering-oauth-consumer-secret (base64-decode-string "NEpWVWhTVk4zVGJSeXZOUnZuakJ3YlpqdUF0RUV6UzhqWHpGWlhma1U=")))
 
-;;; Firefox クライアント
-;; Firefox に Add-on を入れておくと Firefox が telnet サーバーを立ててくれる
-;; https://addons.mozilla.org/En-us/firefox/addon/mozrepl/
-;; そのサーバーに繋いで Emacs から Firefox を操作したり，Firefox の各種情報を取得するためのクライアント
-;;
-;; 参考 http://blogs.openaether.org/?p=236
-(el-get-bundle moz-repl)
-(use-package moz
-  :config
-  ;; http://blogs.openaether.org/?p=236
-  (defun jk/moz-get (attr)
-    (comint-send-string (inferior-moz-process) attr)
-    ;; try to give the repl a chance to respond
-    (sleep-for 0 100))
-  (defun jk/moz-get-current-url ()
-    (interactive)
-    (jk/moz-get "repl._workContext.content.location.href"))
-  (defun jk/moz-get-current-title ()
-    (interactive)
-    (jk/moz-get "repl._workContext.content.document.title"))
-  (defun jk/moz-get-current (moz-fun)
-    (funcall moz-fun)
-    ;; doesn't work if repl takes too long to output string
-    (save-excursion
-      (set-buffer (process-buffer (inferior-moz-process)))
-      (goto-char (point-max))
-      (previous-line)
-      (setq jk/moz-current (buffer-substring-no-properties
-                            (+ (point-at-bol) (length moz-repl-name) 3)
-                            (- (point-at-eol) 1))))
-    (message "%s" jk/moz-current)
-    jk/moz-current)
-  (defun jk/moz-url ()
-    (interactive)
-    (jk/moz-get-current 'jk/moz-get-current-url))
-  (defun jk/moz-title ()
-    (interactive)
-    (jk/moz-get-current 'jk/moz-get-current-title)))
-
 ;;; logalimacs
 (el-get-bundle logalimacs)
 (use-package logalimacs
@@ -562,8 +523,10 @@
     ;; http://stackoverflow.com/questions/8614642/how-to-type-a-dynamic-file-entry-for-org-capture
     ;; バッククォートの中では "," をつけたものだけ評価/展開される
     ;; http://qiita.com/snmsts@github/items/ef625bd6be7e685843ca
-    (add-to-list 'org-capture-templates `("f" "Firefox to Nikulog" entry (file+headline ,filepath ,title) "* %?\n%(concat \"[[\" (jk/moz-url) \"][\" (jk/moz-title) \"]]\")\n\n"))
-    (add-to-list 'org-capture-templates `("l" "Entry to Nikulog" entry (file+headline ,filepath ,title) "* %?"))))
+    (add-to-list 'org-capture-templates `("l" "Entry to Nikulog" entry (file+headline ,filepath ,title) "* %?"))
+    (let-alist (marionette-alist)
+      (add-to-list 'org-capture-templates `("f" "Firefox to Nikulog" entry (file+headline ,filepath ,title) "* %?\n%(concat \"[[\" .url \"][\" .title \"]]\")\n\n"))
+      .title)))
 
 ;;; Markdown
 (el-get-bundle markdown-mode)
@@ -750,6 +713,41 @@
   (defun elm-mode-hooks-for-elm-mode ()
     (add-to-list 'company-backends 'company-elm))
   (add-hook 'elm-mode-hook 'elm-mode-hooks-for-elm-mode))
+
+;;; Marionette (new Firefox client)
+;; https://firefox-source-docs.mozilla.org/testing/marionette/marionette/index.html
+(defcustom marionette-python-path "python2"
+  "The path which is able to execute a marionette client."
+  :type 'string
+  :group 'marionette)
+
+(defconst marionette-code "import json
+from marionette_driver.marionette import Marionette
+client = Marionette('localhost', port=2828)
+client.start_session()
+url = client.get_url()
+title = client.title
+return_object = {'url': url, 'title': title}
+json = json.dumps(return_object, separators=(',',':'))
+print(json)
+client.delete_session()
+" "The python code which is executed.")
+
+(defvar marionette-code-path ""
+  "A path of the python code which is executed.")
+
+(defun marionette-command ()
+  "The command which will execute."
+  (if (f-file-p marionette-code-path)
+      (concat marionette-python-path " " marionette-code-path)
+    (let ((code-path (make-temp-file "marionette" nil ".py")))
+      (f-append-text marionette-code 'utf-8 code-path)
+      (setq marionette-code-path code-path)
+      (concat marionette-python-path " " marionette-code-path))))
+
+(defun marionette-alist ()
+  "Get alist from a browser."
+  (json-read-from-string (shell-command-to-string (marionette-command))))
 
 ;;;
 ;;; ローカルな環境で利用するようなelisp
