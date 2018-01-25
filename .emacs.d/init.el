@@ -485,8 +485,7 @@
 (use-package plantuml-mode
   :config
   (custom-set-variables
-   '(plantuml-output-type "png") ;; FIXME pngだと期待通りの画像が表示されない
-   '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2017.13/libexec/plantuml.jar")))
+   '(plantuml-output-type "png"))) ;; FIXME pngだと期待通りの画像が表示されない
 
 ;;; Nikulog
 
