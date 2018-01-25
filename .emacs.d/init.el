@@ -343,7 +343,7 @@
 
 ;; 補完機能を利用する
 (el-get-bundle company-mode)
-(use-package company-mode
+(use-package company
   :init
   (global-company-mode 1)
   (bind-keys :map company-active-map
