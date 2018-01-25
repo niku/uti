@@ -221,8 +221,7 @@
   (yas-global-mode 1))
 
 ;; helm
-(el-get-bundle helm
-  :depends (emacs-async))
+(el-get-bundle helm)
 (use-package helm
   :bind
   (("M-x" . helm-M-x)
@@ -311,7 +310,8 @@
   :config
   (custom-set-variables
    '(projectile-completion-system 'helm)
-   '(compilation-read-command nil))     ; コマンド実行時にプロンプトを表示しない
+   '(compilation-read-command nil)      ; コマンド実行時にプロンプトを表示しない
+   )
   :bind
   (("M-g M-r" . projectile-grep)
    ("C-9" . projectile-toggle-between-implementation-and-test)
@@ -322,7 +322,9 @@
   :after
   ;; helm-for-files -> helm-for-files-preferred-list の読み込みに必要
   ;; projectile -> helm-source-projectile-files-and-dired-list の読み込みに必要
-  (helm-for-files projectile)
+  ;; tramp -> dired のときに helm-for-files すると以下のエラーが出るが tramp を読み込んでおくと出ない
+  ;;          `helm-ff--get-host-from-tramp-invalid-fname: Symbol’s value as variable is void: tramp-methods`
+  (helm-for-files projectile tramp)
   :config
   ;; :custom だと期待通りに動作しなかった
   (custom-set-variables
