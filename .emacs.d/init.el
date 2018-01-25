@@ -572,6 +572,10 @@
 (el-get-bundle yaml-mode)
 (use-package yaml-mode)
 
+;;; Terraform
+(el-get-bundle terraform-mode)
+(use-package terraform-mode)
+
 ;;; Ruby
 (use-package ruby-mode
   :config
