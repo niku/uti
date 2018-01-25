@@ -429,7 +429,7 @@
 ;;; Org
 
 (el-get-bundle org-mode)
-(use-package org
+(use-package org-mode
   :mode
   ;; org-default-notes-file のデフォルト値は .notes になっている
   (("\\.notes\\'" . org-mode))
@@ -442,14 +442,14 @@
   (add-hook 'org-mode-hook 'org-mode-hooks)
   :config
   (custom-set-variables
+   ;; orgモードで画像の大きさを変えられるようにする
+   '(org-image-actual-width nil)
    ;; orgファイルを開いたときに畳んだ状態で表示しない（全て表示する）
    '(org-startup-folded nil)
    ;; orgファイルの中で画像をインライン表示する
    '(org-startup-with-inline-images t)
    ;; src ブロックの中を色付けする
-   '(org-src-fontify-natively t)
-   ;; plantumlで利用する
-   '(org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2017.14/libexec/plantuml.jar")))
+   '(org-src-fontify-natively t)))
 
 ;; org-babel
 (el-get-bundle ob-elixir) ; org-babel で Elixir を扱う
