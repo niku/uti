@@ -208,13 +208,7 @@
    ;; 大きい値にしていると，eshellの起動が遅くなることがわかったので，さらに小さい値にする :/
    '(eshell-history-size 100000)
    ;; 連続して行なった同じコマンドが重複してヒストリに登録されず，1件だけ登録されるようにする
-   '(eshell-hist-ignoredups t))
-  ;; eshell コマンド入力時に M-p を押すと履歴を helm でたどる
-  ;; (bind-keys :map eshell-mode-hook ("M-p" . helm-eshell-history))
-  ;; だと動作しなかった
-  (defun eshell-mode-hook-for-helm-eshell-history ()
-    (define-key eshell-mode-map (kbd "M-p") 'helm-eshell-history))
-  (add-hook 'eshell-mode-hook 'eshell-mode-hook-for-helm-eshell-history))
+   '(eishell-hist-ignoredups t)))
 
 ;; yasnippet
 (el-get-bundle yasnippet)
@@ -222,59 +216,22 @@
   :config
   (yas-global-mode 1))
 
-;; helm
-(el-get-bundle helm)
-(use-package helm
+;; ivy/counsel
+(el-get-bundle counsel)
+(use-package counsel
+  :init
+  (counsel-mode 1)
+  :config
+  (ivy-mode 1)
+  :custom
+  (ivy-use-virtual-buffers t)
+  (enable-recursive-minibuffers t)
   :bind
-  (("M-x" . helm-M-x)
-   ("M-y" . helm-show-kill-ring)
-   ("C-;" . helm-for-files)
-   ("C-o" . helm-imenu)
-   ("M-%" . helm-regexp)
-   ("<help> a" . helm-apropos))
-  :config
-  (helm-migemo-mode t)
-  (custom-set-variables
-   ;; OSX のときは helm-locate でファイルを検索するときに Spotlight を使う
-   ;; https://github.com/xiaohanyu/oh-my-emacs/issues/59
-   '(helm-locate-command
-     (case system-type
-       ('gnu/linux "locate -i -r %s")
-       ('berkeley-unix "locate -i %s")
-       ('windows-nt "es %s")
-       ('darwin "mdfind -name %s %s")
-       (t "locate %s"))))
-  (bind-keys :map helm-map
-             ("C-h" . delete-backward-char))
-  ;; 非同期読み込みにしていると，読み込みのタイミングによっては
-  ;; 後続の処理で helm の変数を見つけられなくてエラーになることがあったので
-  ;; 同期的に読み込まれるようにする
-  :demand t)
-
-;; インクリメンタルサーチを機能拡張する
-(el-get-bundle ace-isearch
-  :depends (avy helm-swoop ace-jump-mode))
-(use-package ace-isearch
-  :config
-  (bind-keys :map helm-swoop-map
-             ;; ace-isearch との操作感を統合する
-             ((kbd "C-r") . helm-previous-line)
-             ((kbd "C-s") . helm-next-line))
-  (custom-set-variables
-   '(ace-isearch-submode 'ace-jump-char-mode))
-  (global-ace-isearch-mode 1))
-
-;; describe-bindings の結果を helm で見られるようにする
-(el-get-bundle helm-descbinds)
-(use-package helm-descbinds
-  :config
-  (helm-descbinds-mode))
-
-;; yasnippet のテンプレート一覧を helm で見られるようにする
-(el-get-bundle emacs-jp/helm-c-yasnippet)
-(use-package helm-c-yasnippet
-  :bind
-  (("C-c y" . helm-yas-complete)))
+  ("C-s" . swiper)
+  ("C-o" . counsel-imenu)
+  ("C-;" . ivy-switch-buffer)
+  ("<f6>" . ivy-resume)
+  ("<help> a" . counsel-apropos))
 
 ;; git client
 (el-get-bundle magit)
@@ -311,7 +268,7 @@
   (projectile-mode t)
   :config
   (custom-set-variables
-   '(projectile-completion-system 'helm)
+   '(projectile-completion-system 'ivy)
    '(compilation-read-command nil)      ; コマンド実行時にプロンプトを表示しない
    )
   :bind
@@ -319,20 +276,10 @@
    ("C-9" . projectile-toggle-between-implementation-and-test)
    ("C-0" . projectile-test-project)))
 
-(el-get-bundle helm-projectile)
-(use-package helm-projectile
-  :after
-  ;; helm-for-files -> helm-for-files-preferred-list の読み込みに必要
-  ;; projectile -> helm-source-projectile-files-and-dired-list の読み込みに必要
-  ;; tramp -> dired のときに helm-for-files すると以下のエラーが出るが tramp を読み込んでおくと出ない
-  ;;          `helm-ff--get-host-from-tramp-invalid-fname: Symbol’s value as variable is void: tramp-methods`
-  (helm-for-files projectile tramp)
+(el-get-bundle counsel-projectile)
+(use-package counsel-projectile
   :config
-  ;; :custom だと期待通りに動作しなかった
-  (custom-set-variables
-   '(helm-for-files-preferred-list `,(append
-                                      helm-for-files-preferred-list
-                                      helm-source-projectile-files-and-dired-list))))
+  (counsel-projectile-mode 1))
 
 ;;; compile
 (use-package compile
@@ -364,8 +311,6 @@
 (use-package popwin
   :config
   (popwin-mode 1)
-  ;; helm を popwin で開く
-  (push '("\\*helm.*\\*" :regexp t) popwin:special-display-config)
   ;; quickrun を popwin で開く
   (push '("*quickrun*") popwin:special-display-config))
 
