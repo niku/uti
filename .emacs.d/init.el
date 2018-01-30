@@ -223,6 +223,21 @@
   (counsel-mode 1)
   :config
   (ivy-mode 1)
+  (defun niku-toggle-projectile-lists ()
+    "Returns list of current project files if It is in a project, else list of known project files."
+    (cond ((projectile-project-p)
+           (projectile-current-project-files))
+          (t
+           projectile-known-projects)))
+  ;; TODO
+  ;; listを設定するところまではできたが，開くアクションをしても空のバッファを開くことになる．
+  ;; バッファがあれば，そのバッファ，なければファイルを開くようなアクションを設定しなければいけないかも．
+  ;;
+  ;; (ivy-set-sources
+  ;;  'ivy-switch-buffer
+  ;;  '((original-source)
+  ;;    (niku-toggle-projectile-lists)))
+
   :custom
   (ivy-use-virtual-buffers t)
   (enable-recursive-minibuffers t)
