@@ -326,6 +326,10 @@
 ;; 開いているバッファを簡単に実行して結果を得る
 (el-get-bundle quickrun)
 (use-package quickrun
+  :config
+  (quickrun-add-command "python"
+    '((:command . "python3"))
+    :override t)
   :bind
   (("C-c q r" . quickrun)))
 
