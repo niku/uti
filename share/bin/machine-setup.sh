@@ -140,6 +140,7 @@ brew install awscli
 brew install ffmpeg
 brew install imagemagick
 brew install groonga
+brew install gradle
 brew install maven # for embulk test
 brew install ant
 brew install android-sdk
