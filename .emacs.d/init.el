@@ -628,6 +628,13 @@
     (company-mode-on))
   (add-hook 'typescript-mode-hook 'typescript-mode-hooks-for-tide))
 
+;;; Vue
+(el-get-bundle AdamNiederer/vue-html-mode)
+(el-get-bundle ssass-mode)
+(el-get-bundle edit-indirect)
+(el-get-bundle vue-mode)
+(use-package vue-mode)
+
 ;;; Erlang
 (el-get-bundle erlang)
 (use-package erlang
