@@ -151,6 +151,8 @@ brew install leiningen
 brew install rlwrap
 brew install poppler
 brew install terraform
+# for grpc
+brew install protobuf
 
 brew cleanup
 

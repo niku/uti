@@ -721,6 +721,10 @@ client.delete_session()
   "Get alist from a browser."
   (json-read-from-string (shell-command-to-string (marionette-command))))
 
+;;; To edit protocol buffer
+(el-get-bundle protobuf-mode)
+(use-package protobuf-mode)
+
 ;;;
 ;;; ローカルな環境で利用するようなelisp
 ;;;
