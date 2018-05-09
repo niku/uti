@@ -53,6 +53,7 @@
 (setq visible-bell t)                   ; ビープ音を消す
 (blink-cursor-mode 0)                   ; カーソルを点滅させない
 (global-hl-line-mode 1)                 ; 現在行に色をつける
+(setq column-number-mode t)             ; 列番号をモードラインに表示する
 (transient-mark-mode t)                 ; リージョンをハイライト表示する
 (setq kill-whole-line t)                ; C-kで改行までまとめて行をカットする
 (delete-selection-mode 1)               ; BSで選択範囲を消す
