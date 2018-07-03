@@ -282,14 +282,12 @@
 (use-package projectile
   :init
   (projectile-mode t)
-  :config
-  (custom-set-variables
-   '(projectile-completion-system 'ivy)
-   '(compilation-read-command nil)      ; コマンド実行時にプロンプトを表示しない
-   )
+  :custom
+  (projectile-completion-system 'ivy)
+  (compilation-read-command nil)           ; コマンド実行時にプロンプトを表示しない
+  (projectile-create-missing-test-files t) ; テストファイルがなければ作る
   :bind
-  (("M-g M-r" . projectile-grep)
-   ("C-9" . projectile-toggle-between-implementation-and-test)
+  (("C-9" . projectile-toggle-between-implementation-and-test)
    ("C-0" . projectile-test-project)))
 
 (el-get-bundle counsel-projectile)
@@ -409,16 +407,15 @@
     (skk-mode 1)
     (org-display-inline-images))
   (add-hook 'org-mode-hook 'org-mode-hooks)
-  :config
-  (custom-set-variables
-   ;; orgモードで画像の大きさを変えられるようにする
-   '(org-image-actual-width nil)
-   ;; orgファイルを開いたときに畳んだ状態で表示しない（全て表示する）
-   '(org-startup-folded nil)
-   ;; orgファイルの中で画像をインライン表示する
-   '(org-startup-with-inline-images t)
-   ;; src ブロックの中を色付けする
-   '(org-src-fontify-natively t)))
+  :custom
+  ;; orgモードで画像の大きさを変えられるようにする
+  (org-image-actual-width nil)
+  ;; orgファイルを開いたときに畳んだ状態で表示しない（全て表示する）
+  (org-startup-folded nil)
+  ;; orgファイルの中で画像をインライン表示する
+  (org-startup-with-inline-images t)
+  ;; src ブロックの中を色付けする
+  (org-src-fontify-natively t))
 
 ;; org-babel
 (el-get-bundle ob-elixir) ; org-babel で Elixir を扱う
@@ -434,7 +431,8 @@
      (elixir . t)
      (restclient . t)
      (plantuml . t)
-     (shell . t)))
+     (shell . t)
+     (sql . t )))
   (defun org-babel-after-execute-hooks ()
     (org-display-inline-images))
   (add-hook 'org-babel-after-execute-hook 'org-babel-after-execute-hooks)
@@ -444,6 +442,21 @@
   (custom-set-variables
    ;; コードを評価するときに尋ねない
    '(org-confirm-babel-evaluate nil)))
+
+;; org-reveal : org-mode でスライドを書く
+;; (browse-url "https://github.com/yjwen/org-reveal")
+(el-get-bundle htmlize) ; org-mode でスライドを書いたときにソースコードのハイライトに必要
+(use-package htmlize)
+(el-get-bundle niku/org-reveal :branch "slide-id-editable")
+(use-package ox-reveal
+  :custom
+  (org-reveal-root (expand-file-name "~/src/reveal.js"))
+  (org-reveal-title-slide nil)          ; 自動生成したタイトルを使わない
+  (org-reveal-single-file t)            ; JavaScriptや画像を埋め込んでオフラインでもHTML単体で動くようにする
+  (org-reveal-hlevel 2)                 ; ページの切り替えを ** と *** で行う
+  (org-reveal-history t)                ; スライドのページに直接遷移できるURLを生成する
+  (org-reveal-slide-id-format "%s")
+  )
 
 ;;; PlantUML
 (el-get-bundle skuro/plantuml-mode)
@@ -728,6 +741,14 @@ client.delete_session()
 (defun marionette-alist ()
   "Get alist from a browser."
   (json-read-from-string (shell-command-to-string (marionette-command))))
+
+;;; Go-lang
+;; (browse-url "https://github.com/dominikh/go-mode.el")
+(el-get-bundle go-mode)
+(el-get-bundle company-go)
+(use-package go-mode
+  :bind
+  ("M-." . godef-jump))
 
 ;;; To edit protocol buffer
 (el-get-bundle protobuf-mode)

@@ -23,19 +23,23 @@
 # $ sudo xcodebuild -license
 
 # Homebrew をインストールする
-# https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/Installation.md#installation
+# https://github.com/Homebrew/brew/blob/master/docs/Installation.md
 #
-# $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # AquaSKK をインストールする
 # https://github.com/codefirst/aquaskk
 #
-# https://github.com/codefirst/aquaskk/releases/download/4.2.6/AquaSKK-4.2.6.dmg
+# https://github.com/codefirst/aquaskk/releases/latest
 
 # iTerm2 をインストールする
 # http://mzp.hatenablog.com/entry/2015/03/15/213219
 #
-# https://github.com/mzp/iTerm2/releases/download/AquaSKK/iTerm2.zip
+# https://www.iterm2.com/
+
+# Dropbox をインストールする
+#
+# https://www.dropbox.com/downloading
 
 # 1Password(4.x) をインストールする
 # https://agilebits.com/downloads
@@ -45,10 +49,6 @@
 ############
 # 自動処理 #
 ############
-
-# Homebrew Cask でのアプリのインストール先を ~/Applications から /Applications へと変更する
-# https://github.com/caskroom/homebrew-cask/blob/master/USAGE.md#options
-HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 brew update
 
@@ -95,7 +95,7 @@ brew install ricty && \
     cp -f /usr/local/Cellar/ricty/*/share/fonts/Ricty*.ttf ~/Library/Fonts/ && \
     fc-cache -vf
 brew install ssh-copy-id
-brew install emacs --with-cocoa --with-gnutls --with-imagemagick@6 --with-librsvg --with-modules
+brew install emacs --with-cocoa --with-imagemagick@6 --with-librsvg --with-modules
 brew link emacs
 brew linkapps emacs
 brew install cask
